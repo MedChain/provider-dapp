@@ -1,0 +1,10 @@
+.status {
+  font-style: italic;
+  color: red;
+}
+.status::before {
+  content: "("
+}
+.status::after {
+  content: ")"
+}

@@ -12,18 +12,26 @@
   },
   "devDependencies": {
     "prettier": "1.13.7",
-    "react-scripts": "1.1.4"
+    "react-scripts": "^1.1.5",
+    "redux-devtools-extension": "^2.13.5"
   },
   "dependencies": {
     "connected-react-router": "4.3.0",
-    "react": "16.4.1",
-    "react-dom": "16.4.1",
+    "gulp": "^3.9.1",
+    "informed": "^1.7.3",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-modal": "^3.5.1",
     "react-redux": "5.0.7",
     "react-router": "4.3.1",
     "react-router-dom": "4.3.1",
+    "react-select": "^2.0.0",
+    "react-skeleton-css": "^1.1.0",
     "redux": "4.0.0",
     "redux-thunk": "2.3.0",
     "sanitize.css": "6.0.0",
+    "semantic-ui": "^2.3.3",
+    "semantic-ui-react": "^0.82.3",
     "serve": "9.3.0"
   }
 }

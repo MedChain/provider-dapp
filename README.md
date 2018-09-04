@@ -9,8 +9,19 @@ cd provider-dapp
 yarn
 ```
 
+```bash
+vim semantic/tasks/config/user.js
+#look for line 42 and make it read: extend(true, {}, defaults, userConfig)
+```
+
 ## Get started
 
 ```bash
 yarn start
+```
+
+```bash
+cd semantic
+gulp build
+gulp watch
 ```
