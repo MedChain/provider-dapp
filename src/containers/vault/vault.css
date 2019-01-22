@@ -1,0 +1,15 @@
+#dashboard {
+
+}
+
+.patient-selector {
+    width: 100%;
+}
+
+.ui.item.dropdown.archive {
+  position: absolute;
+  bottom: 0px;
+  height: 100px;
+  border-top: 5px dashed;
+  width: 100%;
+}

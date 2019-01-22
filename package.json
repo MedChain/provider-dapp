@@ -16,11 +16,15 @@
     "redux-devtools-extension": "^2.13.5"
   },
   "dependencies": {
+    "@medchain/identity": "ssh://git@github.com:MedChain/identity.git",
+    "aws-amplify": "^1.1.9",
+    "aws-amplify-react": "^2.1.3",
     "connected-react-router": "4.3.0",
     "gulp": "^3.9.1",
     "informed": "^1.7.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-dropzone": "^6.2.3",
     "react-modal": "^3.5.1",
     "react-redux": "5.0.7",
     "react-router": "4.3.1",

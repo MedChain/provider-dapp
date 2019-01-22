@@ -26,6 +26,13 @@ class Window extends React.Component {
           <Menu.Item
             header
             as={NavLink}
+            to="/vault"
+          >
+            My Vault
+          </Menu.Item>
+          <Menu.Item
+            header
+            as={NavLink}
             to="/emr"
           >
             EMR

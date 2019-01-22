@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Window = () => (
+const Window = (props) => (
   <div id="app-footer" className="frame footer">
-    frame-bottom
+    {props.children}
   </div>
 )
 

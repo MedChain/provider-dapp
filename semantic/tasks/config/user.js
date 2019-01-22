@@ -39,7 +39,7 @@ catch(error) {
 // extend user config with defaults
 gulpConfig = (!userConfig)
   ? extend(true, {}, defaults)
-  : extend({}, defaults, userConfig)
+  : extend(false, {}, defaults, userConfig)
 ;
 
 /*******************************
@@ -55,3 +55,4 @@ config.addDerivedValues(gulpConfig);
 *******************************/
 
 module.exports = gulpConfig;
+

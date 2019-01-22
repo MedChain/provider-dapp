@@ -3,8 +3,11 @@ import { Route } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Segment } from 'semantic-ui-react'
+import Amplify from 'aws-amplify';
+import { withAuthenticator } from 'aws-amplify-react';
 
 import Dashboard from '../dashboard/dashboard'
+import Vault from '../vault/vault'
 import Emr from '../emr/emr'
 
 import NA from '../na'
@@ -13,6 +16,10 @@ import AppHeader from './header'
 import AppLeftSidebar from './left-sidebar'
 import AppRightSidebar from './right-sidebar'
 import AppFooter from './footer'
+import VaultLeftSidebar from '../vault/left-sidebar'
+import VaultRightSidebar from '../vault/right-sidebar'
+import VaultHeader from '../vault/header'
+import VaultFooter from '../vault/footer'
 import EmrLeftSidebar from '../emr/left-sidebar'
 import EmrHeader from '../emr/header'
 import DashboardLeftSidebar from '../dashboard/left-sidebar'
@@ -36,6 +43,9 @@ import {
 
 import './app.css'
 
+import aws_exports_auth from '../../aws-exports-auth';
+Amplify.configure(aws_exports_auth);
+
 class App extends React.Component {
   componentDidMount() {
     this.props.switchPatient(1);
@@ -52,21 +62,30 @@ class App extends React.Component {
     return (
       <div>
         <AppHeader>
+          <Route exact path="/vault/" component={VaultHeader} />
+          <Route exact path="/vault/*" component={VaultHeader} />
           <Route exact path="/emr/" component={EmrHeader} />
           <Route exact path="/emr/*" component={EmrHeader} />
         </AppHeader>
         <AppLeftSidebar>
+          <Route exact path="/vault/" component={VaultLeftSidebar} />
+          <Route exact path="/vault/*" component={VaultLeftSidebar} />
           <Route exact path="/emr/" component={EmrLeftSidebar} />
           <Route exact path="/emr/*" component={EmrLeftSidebar} />
           <Route exact path="/dashboard/" component={DashboardLeftSidebar} />
           <Route exact path="/dashboard/*" component={DashboardLeftSidebar} />
         </AppLeftSidebar>
-        <AppRightSidebar />
+        <AppRightSidebar>
+          <Route exact path="/vault/" component={VaultRightSidebar} />
+          <Route exact path="/vault/*" component={VaultRightSidebar} />
+        </AppRightSidebar>
         <main>
 
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/dashboard/" component={Dashboard} />
           <Route path="/dashboard/*" component={Dashboard} />
+          <Route exact path="/vault/" component={Vault} />
+          <Route exact path="/vault/*" component={Vault} />
           <Route exact path="/emr/" component={Emr} />
           <Route exact path="/emr/*" component={Emr} />
           <Route exact path="/doctor" component={Doctor} />
@@ -85,7 +104,10 @@ class App extends React.Component {
           <Route exact path="/temp-page9" component={TempPage9} />
         </main>
 
-        <AppFooter />
+        <AppFooter>
+          <Route exact path="/vault/" component={VaultFooter} />
+          <Route exact path="/vault/*" component={VaultFooter} />
+        </AppFooter>
       </div>
     )
   }
@@ -105,7 +127,13 @@ const mapDispatchToProps = dispatch =>
     dispatch
   )
 
+// export default withAuthenticator(
+//   connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+//   )(App), true);
+
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App)
+    mapStateToProps,
+    mapDispatchToProps
+  )(App);
