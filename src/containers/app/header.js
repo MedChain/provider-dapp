@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { Button, Input, Menu } from 'semantic-ui-react'
+import { Input, Menu } from 'semantic-ui-react'
 
 class Window extends React.Component {
   state = { activeItem: 'home' }

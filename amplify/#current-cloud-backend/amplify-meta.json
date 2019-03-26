@@ -1,0 +1,35 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "providerdapp-20181105054933-authRole",
+			"UnauthRoleArn": "arn:aws:iam::251121517084:role/providerdapp-20181105054933-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::251121517084:role/providerdapp-20181105054933-authRole",
+			"Region": "us-east-2",
+			"DeploymentBucketName": "providerdapp-20181105054933-deployment",
+			"UnauthRoleName": "providerdapp-20181105054933-unauthRole",
+			"StackName": "providerdapp-20181105054933",
+			"StackId": "arn:aws:cloudformation:us-east-2:251121517084:stack/providerdapp-20181105054933/3f012bc0-e0f9-11e8-b24a-021b078b4832"
+		}
+	},
+	"hosting": {
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/providerdapp-20181105054933-deployment/amplify-cfn-templates/hosting/template.json",
+				"logicalId": "hostingS3AndCloudFront"
+			},
+			"lastPushTimeStamp": "2018-11-19T15:06:21.239Z",
+			"output": {
+				"CloudFrontSecureURL": "https://d1kgzhpgc5hfa8.cloudfront.net",
+				"S3BucketSecureURL": "https://providerdapp-20181105055057--hostingbucket.s3.amazonaws.com",
+				"WebsiteURL": "http://providerdapp-20181105055057--hostingbucket.s3-website.us-east-2.amazonaws.com",
+				"CloudFrontDistributionID": "EL0LKKKYCI9HV",
+				"Region": "us-east-2",
+				"HostingBucketName": "providerdapp-20181105055057--hostingbucket",
+				"CloudFrontDomainName": "d1kgzhpgc5hfa8.cloudfront.net"
+			},
+			"lastPushDirHash": "msDvHUV6PxdQS493c5J+48JO4QA="
+		}
+	}
+}

@@ -2,7 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Dropdown, Icon, Label, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Divider, Dropdown, Icon, Label, List, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import ControlledPopup from '../../components/ControlledPopup'
 
 const trigger = (label, icon, array) => {
   const length = array.reduce((a, b) => a + b.count, 0);;
@@ -42,6 +43,18 @@ const Window = (props) => (
         visible={true}
         width='thin'
       >
+
+        <ControlledPopup trigger={
+          <Icon color='teal' size='big' name='add circle' />
+        }>
+          <List link>
+            <List.Item as='a'>Folder</List.Item>
+            <List.Item as='a'>Upload file</List.Item>
+            <Divider />
+            <List.Item as='a'>Backup</List.Item>
+            <List.Item as='a'>EMR: Observation</List.Item>
+          </List>
+        </ControlledPopup>
         <Dropdown item trigger={trigger('Directory1', 'hospital', props.data.clinical)} >
           <Dropdown.Menu>
             {props.data.clinical.map(function(d, idx){

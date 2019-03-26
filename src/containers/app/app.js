@@ -2,7 +2,6 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Segment } from 'semantic-ui-react'
 import Amplify from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react';
 
