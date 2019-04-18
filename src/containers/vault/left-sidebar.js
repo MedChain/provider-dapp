@@ -55,7 +55,7 @@ const Window = (props) => (
             <List.Item as='a'>EMR: Observation</List.Item>
           </List>
         </ControlledPopup>
-        <Dropdown item trigger={trigger('Directory1', 'hospital', props.data.clinical)} >
+        <Dropdown item trigger={trigger('Directory1test', 'hospital', props.data.clinical)} >
           <Dropdown.Menu>
             {props.data.clinical.map(function(d, idx){
               return menuItem('clinical', d)
