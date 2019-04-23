@@ -58,7 +58,7 @@ const Window = props => {
           visible={true}
           width="thin">
           <ControlledPopup
-            trigger={<Icon color="teal" size="big" name="add circle" />}>
+            trigger={<Icon color="teal" size="big" name="add circle" style={icon} />}>
             <List link>
               <List.Item as="a">Folder</List.Item>
               <List.Item as="a">Upload file</List.Item>
@@ -155,3 +155,7 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Window)
+
+const icon = {
+  marginTop: '0.5rem'
+}

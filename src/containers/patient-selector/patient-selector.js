@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import {
   apiGetPatientList,
   switchPatient,
-} from '../../modules/patient'
+} from '../modules/patient'
 
 let optionItems = [];
 

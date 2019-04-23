@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 
 import {
   apiPostPatient,
-} from '../../modules/patient'
+} from '../modules/patient'
 
 
 const FormContent = () => (

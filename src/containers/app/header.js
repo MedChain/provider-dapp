@@ -55,6 +55,7 @@ class Window extends React.Component {
               header
               as={NavLink}
               to="/logout"
+              style={header}
             >
               Logout
             </Menu.Item>
@@ -66,3 +67,7 @@ class Window extends React.Component {
 }
 
 export default Window
+
+const header = {
+  marginRight: '1rem'
+}

@@ -38,7 +38,7 @@ import TempPage9 from '../temp-page/temp-page9'
 import {
   switchPatient,
   apiGetPatientList,
-} from '../../modules/patient'
+} from '../modules/patient'
 
 import './app.css'
 
