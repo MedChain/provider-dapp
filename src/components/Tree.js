@@ -4,39 +4,39 @@ import PropTypes from 'prop-types'
 import TreeNode from './TreeNode'
 
 const data = {
-  '/root': {
-    path: '/root',
+  '/parentFolder1': {
+    path: '/parentFolder1',
     type: 'folder',
     isRoot: true,
-    children: ['/root/david', '/root/jslancer']
+    children: ['/parentFolder1/childFolder1', '/parentFolder1/childFolder2']
   },
-  '/root/david': {
-    path: '/root/david',
+  '/parentFolder1/childFolder1': {
+    path: '/parentFolder1/childFolder1',
     type: 'folder',
-    children: ['/root/david/readme.md']
+    children: ['/parentFolder1/childFolder1/readme.md']
   },
-  '/root/david/readme.md': {
-    path: '/root/david/readme.md',
+  '/parentFolder1/childFolder1/readme.md': {
+    path: '/parentFolder1/childFolder1/readme.md',
     type: 'file',
     content: 'Thanks for reading me me. But there is nothing here.'
   },
-  '/root/jslancer': {
-    path: '/root/jslancer',
+  '/parentFolder1/childFolder2': {
+    path: '/parentFolder1/childFolder2',
     type: 'folder',
-    children: ['/root/jslancer/projects', '/root/jslancer/vblogs']
+    children: ['/parentFolder1/childFolder2/projects', '/parentFolder1/childFolder2/vblogs']
   },
-  '/root/jslancer/projects': {
-    path: '/root/jslancer/projects',
+  '/parentFolder1/childFolder2/projects': {
+    path: '/parentFolder1/childFolder2/projects',
     type: 'folder',
-    children: ['/root/jslancer/projects/treeview']
+    children: ['/parentFolder1/childFolder2/projects/treeview']
   },
-  '/root/jslancer/projects/treeview': {
-    path: '/root/jslancer/projects/treeview',
+  '/parentFolder1/childFolder2/projects/treeview': {
+    path: '/parentFolder1/childFolder2/projects/treeview',
     type: 'folder',
     children: []
   },
-  '/root/jslancer/vblogs': {
-    path: '/root/jslancer/vblogs',
+  '/parentFolder1/childFolder2/vblogs': {
+    path: '/parentFolder1/childFolder2/vblogs',
     type: 'folder',
     children: []
   }
