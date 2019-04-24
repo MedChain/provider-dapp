@@ -13,3 +13,7 @@
   border-top: 5px dashed;
   width: 100%;
 }
+
+.sidebar-content {
+  height: 92%;
+}
