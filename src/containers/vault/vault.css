@@ -17,3 +17,7 @@
 .sidebar-content {
   height: 92%;
 }
+
+#vault {
+  margin: 1rem 0 0 2rem;
+}

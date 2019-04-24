@@ -10,6 +10,7 @@ import {
   Sidebar
 } from 'semantic-ui-react'
 
+
 const Window = () => (
   <div className="app-right-sidebar-header" style={rightBar}>
     <h2>File Metadata</h2>

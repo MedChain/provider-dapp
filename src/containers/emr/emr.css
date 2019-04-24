@@ -5,3 +5,7 @@
 .patient-selector {
     width: 100%;
 }
+
+#emr {
+    margin: 1rem 0 0 2rem;
+}
