@@ -13,7 +13,7 @@ import {
   Sidebar
 } from 'semantic-ui-react'
 import ControlledPopup from '../../components/ControlledPopup'
-import Tree from './TreeNode'
+import Tree from './Tree'
 
 const trigger = (label, icon, array) => {
   const length = array.reduce((a, b) => a + b.count, 0)
