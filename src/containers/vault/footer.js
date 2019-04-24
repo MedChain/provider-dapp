@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Window = () => (
-  <div id="vault-footer" className="">
+  <div id="vault-footer">
     <ul>
       <li>Share</li>
       <li>Copy</li>
@@ -12,3 +12,4 @@ const Window = () => (
 )
 
 export default Window
+
