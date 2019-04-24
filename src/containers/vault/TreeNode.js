@@ -37,7 +37,7 @@ const TreeNode = (props) => {
         <NodeIcon onClick={() => onToggle(node)}>
           { node.type === 'folder' && (node.isOpen ? <FaChevronDown /> : <FaChevronRight />) }
         </NodeIcon>
-        
+      
         <NodeIcon marginRight={10}>
           { node.type === 'file' && <FaFile /> }
           { node.type === 'folder' && node.isOpen === true && <FaFolderOpen /> }

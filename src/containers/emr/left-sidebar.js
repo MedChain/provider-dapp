@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Dropdown, Icon, Label, Menu, Segment, Sidebar } from 'semantic-ui-react'
 
+
 const trigger = (label, icon, count) => (
   <span className='trigger'>
     <Label color='red' floating pointing='right'>
@@ -39,7 +40,7 @@ const Window = (props) => (
         visible={true}
         width='thin'
       >
-        <Dropdown item trigger={trigger('Clinicals', 'hospital', 52)} >
+        {/* <Dropdown item trigger={trigger('Clinicals', 'hospital', 52)} >
           <Dropdown.Menu>
             {props.data.clinical.map(function(d, idx){
               return menuItem('clinical', d)
@@ -61,7 +62,7 @@ const Window = (props) => (
                return menuItem('medication', d)
              })}
           </Dropdown.Menu>
-        </Dropdown>
+        </Dropdown> */}
 
       </Sidebar>
 
