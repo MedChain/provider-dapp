@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Input, Menu } from 'semantic-ui-react'
+import logo from '../../assets/medchain.jpeg'
 
 class Window extends React.Component {
   state = { activeItem: 'home' }
@@ -12,51 +13,28 @@ class Window extends React.Component {
 
     return (
       <div id="app-header" className="frame header">
-        <Menu
-          stackable
-          borderless
-        >
-          <Menu.Item
-            header
-            as={NavLink}
-            to="/dashboard"
-          >
+        <Menu stackable borderless>
+          <img src={logo} alt="MedChain logo" style={imgStyle} />
+          <Menu.Item header as={NavLink} to="/dashboard">
             Dashboard
           </Menu.Item>
-          <Menu.Item
-            header
-            as={NavLink}
-            to="/vault"
-          >
+          <Menu.Item header as={NavLink} to="/vault">
             My Vault
           </Menu.Item>
-          <Menu.Item
-            header
-            as={NavLink}
-            to="/emr"
-          >
+          <Menu.Item header as={NavLink} to="/emr">
             EMR
           </Menu.Item>
-          <Menu.Item
-            header
-            as={NavLink}
-            to="/messages"
-          >
+          <Menu.Item header as={NavLink} to="/messages">
             Messages
           </Menu.Item>
 
           {this.props.children}
 
-          <Menu.Menu position='right'>
+          <Menu.Menu position="right">
             <Menu.Item>
-              <Input icon='search' placeholder='Search...' />
+              <Input icon="search" placeholder="Search..." />
             </Menu.Item>
-            <Menu.Item
-              header
-              as={NavLink}
-              to="/logout"
-              style={header}
-            >
+            <Menu.Item header as={NavLink} to="/logout" style={header}>
               Logout
             </Menu.Item>
           </Menu.Menu>
@@ -70,4 +48,10 @@ export default Window
 
 const header = {
   marginRight: '1rem'
+}
+
+const imgStyle = {
+  width: '3rem',
+  height: '3rem',
+  margin: '1rem 3.3rem 1rem 2rem'
 }

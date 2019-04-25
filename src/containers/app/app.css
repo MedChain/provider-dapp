@@ -1,3 +1,24 @@
+.frame {
+  bottom: -7rem;
+}
+
+.frame.header {
+  padding-bottom: 6rem;
+}
+
+.frame.left-sidebar {
+  top: 5.05rem;
+  height: 104%;
+}
+
+.frame.right-sidebar {
+  top: 7rem;
+}
+
+.sidebar-content {
+  height: 101%;
+}
+
 #app-footer ul {
   list-style-type: none;
   margin: 0;
@@ -18,4 +39,9 @@
 }
 #app-footer li:hover {
   background-color: #111111;
+}
+
+.ui.menu .item>.input 
+input {
+  width: 25rem;
 }

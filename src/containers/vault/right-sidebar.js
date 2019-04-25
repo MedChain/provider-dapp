@@ -12,14 +12,10 @@ import {
 
 
 const Window = () => (
-  <div className="app-right-sidebar-header" style={rightBar}>
+  <div className="app-right-sidebar-header">
     <h2>File Metadata</h2>
     <p>(No PII)</p>
   </div>
 )
 
 export default Window
-
-const rightBar = {
-  border: '1px solid #ccc',
-}

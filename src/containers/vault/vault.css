@@ -3,7 +3,7 @@
 }
 
 .patient-selector {
-    width: 100%;
+  width: 100%;
 }
 
 .ui.item.dropdown.archive {
@@ -19,5 +19,6 @@
 }
 
 #vault {
-  margin: 1rem 0 0 2rem;
+  margin: 3rem 0 0 2rem;
+  width: 100%;
 }

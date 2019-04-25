@@ -77,14 +77,14 @@ class DragAndDrop extends Component {
             <div
               style={{
                 position: 'absolute',
-                top: '50%',
+                top: '90%',
                 right: 0,
                 left: 0,
                 textAlign: 'center',
                 color: 'grey',
                 fontSize: 36
               }}>
-              <div>drop here :)</div>
+              <div>Drop files here</div>
             </div>
           </div>
         )}
