@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import values from 'lodash/values'
 import PropTypes from 'prop-types'
-import TreeNode from './TreeNode'
+import TreeNode from './left-sidebar-tree-node'
 
 const data = {
     id: 1,
