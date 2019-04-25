@@ -51,8 +51,7 @@ const header = {
 }
 
 const imgStyle = {
-  width: '2.6rem',
-  height: '2.6rem',
-  margin: '.5rem 0 1rem .5rem'
+  width: '3rem',
+  height: '3rem',
+  margin: '1rem 3.3rem 1rem 2rem'
 }
-
