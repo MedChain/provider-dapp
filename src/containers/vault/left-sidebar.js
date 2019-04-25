@@ -96,7 +96,11 @@ const Window = props => {
         </Dropdown> */}
           <ArchiveTree onSelect={onSelect} />
           <hr></hr>
-          <Progress percent={13} label='130.1GB used (1000GB total)' />
+          <h3>Storage</h3>
+          <div class="ui tiny progress">
+            <div class="bar"></div>
+            <div class="label">130.1GB used (1000GB total)</div>
+          </div>
           {/* <Dropdown
             item
             trigger={trigger('Archive', 'archive', props.data.archive)}
