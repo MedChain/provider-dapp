@@ -10,7 +10,8 @@ import {
   List,
   Menu,
   Segment,
-  Sidebar
+  Sidebar,
+  Progress
 } from 'semantic-ui-react'
 import ControlledPopup from '../../components/ControlledPopup'
 import Tree from './left-sidebar-tree'
@@ -95,7 +96,7 @@ const Window = props => {
         </Dropdown> */}
           <ArchiveTree onSelect={onSelect} />
           <hr></hr>
-          13.1GB used (1000GB total)
+          <Progress percent={13} label='130.1GB used (1000GB total)' />
           {/* <Dropdown
             item
             trigger={trigger('Archive', 'archive', props.data.archive)}
