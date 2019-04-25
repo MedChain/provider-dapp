@@ -14,6 +14,7 @@ import {
 } from 'semantic-ui-react'
 import ControlledPopup from '../../components/ControlledPopup'
 import Tree from './left-sidebar-tree'
+import ArchiveTree from './archive-tree'
 
 const trigger = (label, icon, array) => {
   const length = array.reduce((a, b) => a + b.count, 0)
@@ -68,6 +69,7 @@ const Window = props => {
             </List>
           </ControlledPopup>
           <Tree onSelect={onSelect} />
+          <hr></hr>
           {/* <Dropdown item trigger={trigger('Directory1test', 'hospital', props.data.clinical)} >
           <Dropdown.Menu>
             {props.data.clinical.map(function(d, idx){
@@ -91,6 +93,8 @@ const Window = props => {
              })}
           </Dropdown.Menu>
         </Dropdown> */}
+          <ArchiveTree onSelect={onSelect} />
+          <hr></hr>
           13.1GB used (1000GB total)
           {/* <Dropdown
             item
