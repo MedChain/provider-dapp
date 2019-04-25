@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Dropdown, Icon, Label, Menu, Segment, Sidebar } from 'semantic-ui-react'
-import Tree from './Tree'
+import Tree from './left-sidebar-tree'
 
 
 const trigger = (label, icon, count) => (

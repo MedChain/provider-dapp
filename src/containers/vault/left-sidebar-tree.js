@@ -76,6 +76,44 @@ const data = {
     type: 'folder',
     children: []
   },
+  
+  '/Archive': {
+    userId: 4,
+    path: '/Archive',
+    type: 'folder',
+    isRoot: true,
+    children: ['/Archive/childFolder1', '/Archive/childFolder2', '/Archive/childFolder3', '/Archive/childFolder4', '/Archive/childFolder5', '/Archive/childFolder6']
+  },
+  '/Archive/childFolder1': {
+    path: '/Archive/childFolder1',
+    type: 'folder',
+    children: []
+  },
+  '/Archive/childFolder2': {
+    path: '/Archive/childFolder2',
+    type: 'folder',
+    children: []
+  },
+  '/Archive/childFolder3': {
+    path: '/Archive/childFolder3',
+    type: 'folder',
+    children: []
+  },
+  '/Archive/childFolder4': {
+    path: '/Archive/childFolder4',
+    type: 'folder',
+    children: []
+  },
+  '/Archive/childFolder5': {
+    path: '/Archive/childFolder5',
+    type: 'folder',
+    children: []
+  },
+  '/Archive/childFolder6': {
+    path: '/Archive/childFolder6',
+    type: 'folder',
+    children: []
+  },
 }
 
 export default class Tree extends Component {

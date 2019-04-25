@@ -92,7 +92,7 @@ const Window = props => {
           </Dropdown.Menu>
         </Dropdown> */}
           13.1GB used (1000GB total)
-          <Dropdown
+          {/* <Dropdown
             item
             trigger={trigger('Archive', 'archive', props.data.archive)}
             className="archive">
@@ -101,7 +101,7 @@ const Window = props => {
                 return menuItem('archive', d)
               })}
             </Dropdown.Menu>
-          </Dropdown>
+          </Dropdown> */}
         </Sidebar>
 
         <Sidebar.Pusher>
