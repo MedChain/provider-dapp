@@ -98,7 +98,7 @@ const Window = props => {
           <hr></hr>
 
           <div class="label">Storage</div>
-          <div class="ui tiny progress">
+          <div class="ui tiny progress blue">
             <div class="bar" ></div>
           </div>
           <div className="storage">130.1 GB used (1000 GB total)</div>
