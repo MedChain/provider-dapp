@@ -100,8 +100,8 @@ const Window = props => {
           <div class="label">Storage</div>
           <div class="ui tiny progress">
             <div class="bar" ></div>
-            <div class="label">130.1GB used (1000GB total)</div>
           </div>
+          <div className="storage">130.1 GB used (1000 GB total)</div>
           {/* <Dropdown
             item
             trigger={trigger('Archive', 'archive', props.data.archive)}
