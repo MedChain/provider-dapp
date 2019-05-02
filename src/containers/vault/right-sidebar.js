@@ -1,18 +1,7 @@
 import React from 'react'
-import {
-  Divider,
-  Dropdown,
-  Grid,
-  Icon,
-  Image,
-  Label,
-  List,
-  Menu,
-  Segment,
-  Sidebar
-} from 'semantic-ui-react'
-import { FaFile, FaFolder, FaFolderOpen, FaChevronDown, FaChevronRight } from 'react-icons/fa';
-
+import { Grid } from 'semantic-ui-react'
+import { FaFile, FaFolder } from 'react-icons/fa';
+import "./vault.css"
 
 // const Window = () => (
 //   <div className="app-right-sidebar-header">
@@ -20,6 +9,17 @@ import { FaFile, FaFolder, FaFolderOpen, FaChevronDown, FaChevronRight } from 'r
 //     <p>(No PII)</p>
 //   </div>
 // )
+
+const FileName = (name) => (
+  // Replace hardcoded name with file name from props
+  <h2 className="app-right-sidebar-header">File Metadata</h2>
+)
+
+const SelectImage = (fileType) => {
+  // Add option of folder icon image or file icon depending on file type
+  {/* <Image src="" alt="" size="medium" centered /> */}
+  return <FaFolder size={50}/> 
+}
 
 const MetaDataList = (metaData) => (
   <Grid columns={2}>
@@ -44,13 +44,15 @@ const MetaDataList = (metaData) => (
 
 const Window = (props) => {
   console.log("Right Sidebar: ", props)
+
+  //need to add: if nothing is clicked, right sidebar does not appear.  If left sidebar tree or item in main section is clicked, show right sidebar metadata
+
   return (
-    <div className="app-right-sidebar-header">
-      <h2>File Metadata</h2>
+    <div>
+      <FileName name={props.name}/>
       <hr />
-      <div style={{ textAlign: "center" }}>
-        {/* <Image src="" alt="" size="medium" centered /> */}
-        <FaFolder size={50}/>      
+      <div className="right-sidebar-image">
+        <SelectImage fileType={props.fileType}/>
       </div>
       <hr />
       <MetaDataList metaData={props.metaData}/>
