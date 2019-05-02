@@ -96,10 +96,10 @@ const Window = props => {
         </Dropdown> */}
           <ArchiveTree onSelect={onSelect} />
           <hr></hr>
-        
-          <div className="label">Storage</div>
-          <div className="ui tiny progress blue">
-            <div className="bar"></div>
+
+          <div class="label">Storage</div>
+          <div class="ui tiny progress blue">
+            <div class="bar" ></div>
           </div>
           <div className="storage">130.1 GB used (1000 GB total)</div>
           {/* <Dropdown

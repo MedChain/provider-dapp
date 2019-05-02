@@ -70,7 +70,7 @@ class DragAndDrop extends Component {
               position: 'absolute',
               width: '20rem',
               height: '10rem',
-              top: 22,
+              top: 33,
               bottom: 0,
               left: 0,
               right: 0,
