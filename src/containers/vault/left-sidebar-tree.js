@@ -56,12 +56,12 @@ const data = {
           type: 'folder',
           children: []
         },
-      '/parentFolder3/childFolder2': {
-        folderId: 2,
-        path: '/parentFolder3/childFolder2',
-        type: 'folder',
-        children: []
-      }
+    '/parentFolder3/childFolder2': {
+      folderId: 2,
+      path: '/parentFolder3/childFolder2',
+      type: 'folder',
+      children: []
+    }
 }
 
 export default class Tree extends Component {
