@@ -22,4 +22,6 @@ yarn-error.log*
 package-lock.json
 
 # semantic
-src/semantic/dist
+semantic/dist
+src/semantic/semantic.css
+src/semantic/semantic.js
