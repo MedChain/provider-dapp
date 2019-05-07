@@ -5,49 +5,49 @@ import TreeNode from './archive-tree-node'
 
 const data = {
   id: 1,
-    '/Archive': {
-      userId: 1,
-      path: '/Archive',
-      type: 'folder',
-      isRoot: true,
-      children: ['/Archive/childFolder1', '/Archive/childFolder2', '/Archive/childFolder3', '/Archive/childFolder4', '/Archive/childFolder5', '/Archive/childFolder6']
-    },
-      '/Archive/childFolder1': {
-        folderId: 1,
-        path: '/Archive/childFolder1',
-        type: 'folder',
-        children: []
-      },
-      '/Archive/childFolder2': {
-        folderId: 2,
-        path: '/Archive/childFolder2',
-        type: 'folder',
-        children: []
-      },
-      '/Archive/childFolder3': {
-        folderId: 3,
-        path: '/Archive/childFolder3',
-        type: 'folder',
-        children: []
-      },
-      '/Archive/childFolder4': {
-        folderId: 4,
-        path: '/Archive/childFolder4',
-        type: 'folder',
-        children: []
-      },
-      '/Archive/childFolder5': {
-        folderId: 5,
-        path: '/Archive/childFolder5',
-        type: 'folder',
-        children: []
-      },
-      '/Archive/childFolder6': {
-        folderId: 6,
-        path: '/Archive/childFolder6',
-        type: 'folder',
-        children: []
-      },
+  '/Archive': {
+    userId: 1,
+    path: '/Archive',
+    type: 'folder',
+    isRoot: true,
+    children: ['/Archive/childFolder1', '/Archive/childFolder2', '/Archive/childFolder3', '/Archive/childFolder4', '/Archive/childFolder5', '/Archive/childFolder6']
+  },
+  '/Archive/childFolder1': {
+    folderId: 1,
+    path: '/Archive/childFolder1',
+    type: 'folder',
+    children: []
+  },
+  '/Archive/childFolder2': {
+    folderId: 2,
+    path: '/Archive/childFolder2',
+    type: 'folder',
+    children: []
+  },
+  '/Archive/childFolder3': {
+    folderId: 3,
+    path: '/Archive/childFolder3',
+    type: 'folder',
+    children: []
+  },
+  '/Archive/childFolder4': {
+    folderId: 4,
+    path: '/Archive/childFolder4',
+    type: 'folder',
+    children: []
+  },
+  '/Archive/childFolder5': {
+    folderId: 5,
+    path: '/Archive/childFolder5',
+    type: 'folder',
+    children: []
+  },
+  '/Archive/childFolder6': {
+    folderId: 6,
+    path: '/Archive/childFolder6',
+    type: 'folder',
+    children: []
+  },
 }
 
 export default class ArchiveTree extends Component {
