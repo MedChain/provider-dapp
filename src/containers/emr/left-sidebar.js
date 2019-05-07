@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Dropdown, Icon, Label, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import Tree from './left-sidebar-tree'
+
 
 const trigger = (label, icon, count) => (
   <span className='trigger'>
@@ -12,6 +14,8 @@ const trigger = (label, icon, count) => (
     <Icon name={icon} /> {label}
   </span>
 )
+
+const onSelect = file => this.setState({ selectedFile: file })
 
 const menuItem = (category, data) => {
   const href = '/emr/'+category+'/'+data.label.toLowerCase();
@@ -39,7 +43,9 @@ const Window = (props) => (
         visible={true}
         width='thin'
       >
-        <Dropdown item trigger={trigger('Clinicals', 'hospital', 52)} >
+      <Tree onSelect={onSelect} />
+
+        {/* <Dropdown item trigger={trigger('Clinicals', 'hospital', 52)} >
           <Dropdown.Menu>
             {props.data.clinical.map(function(d, idx){
               return menuItem('clinical', d)
@@ -61,7 +67,7 @@ const Window = (props) => (
                return menuItem('medication', d)
              })}
           </Dropdown.Menu>
-        </Dropdown>
+        </Dropdown> */}
 
       </Sidebar>
 

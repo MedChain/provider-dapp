@@ -2,23 +2,18 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-const Window = (props) => (
-  <div>
-    Anything here?
+const Window = props => (
+  <div className="logo">
+    {/* Anything here? */}
   </div>
 )
 
+const mapStateToProps = (state, ownProps) => ({})
 
-const mapStateToProps = (state, ownProps) => ({
-})
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({
-    },
-    dispatch
-  )
+const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Window)
+
