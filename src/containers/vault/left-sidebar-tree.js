@@ -11,34 +11,16 @@ const data = {
     type: 'folder',
     isRoot: true,
     children: ['/parentFolder1/childFolder1', '/parentFolder1/childFolder2']
-  },
+  }, 
   '/parentFolder1/childFolder1': {
+    folderId: 1,
     path: '/parentFolder1/childFolder1',
-    type: 'folder',
-    children: ['/parentFolder1/childFolder1/readme.md']
-  },
-  '/parentFolder1/childFolder1/readme.md': {
-    path: '/parentFolder1/childFolder1/readme.md',
-    type: 'file',
-    content: 'Thanks for reading me me. But there is nothing here.'
-  },
-  '/parentFolder1/childFolder2': {
-    path: '/parentFolder1/childFolder2',
-    type: 'folder',
-    children: ['/parentFolder1/childFolder2/projects', '/parentFolder1/childFolder2/vblogs']
-  },
-  '/parentFolder1/childFolder2/projects': {
-    path: '/parentFolder1/childFolder2/projects',
-    type: 'folder',
-    children: ['/parentFolder1/childFolder2/projects/treeview']
-  },
-  '/parentFolder1/childFolder2/projects/treeview': {
-    path: '/parentFolder1/childFolder2/projects/treeview',
     type: 'folder',
     children: []
   },
-  '/parentFolder1/childFolder2/vblogs': {
-    path: '/parentFolder1/childFolder2/vblogs',
+  '/parentFolder1/childFolder2': {
+    folderId: 2,
+    path: '/parentFolder1/childFolder2',
     type: 'folder',
     children: []
   },
@@ -57,21 +39,25 @@ const data = {
     children: ['/parentFolder3/childFolder1', '/parentFolder3/childFolder2']
   },
   '/parentFolder3/childFolder1': {
+    folderId: 1,
     path: '/parentFolder3/childFolder1',
     type: 'folder',
     children: ['/parentFolder3/childFolder1/childFolder1', '/parentFolder3/childFolder1/childFolder2']
   },
   '/parentFolder3/childFolder1/childFolder1': {
+    folderId: 1,
     path: '/parentFolder1/childFolder1/childFolder1',
     type: 'folder',
     children: []
   },
   '/parentFolder3/childFolder1/childFolder2': {
+    folderId: 2,
     path: '/parentFolder1/childFolder1/childFolder2',
     type: 'folder',
     children: []
   },
   '/parentFolder3/childFolder2': {
+    folderId: 2,
     path: '/parentFolder3/childFolder2',
     type: 'folder',
     children: []
