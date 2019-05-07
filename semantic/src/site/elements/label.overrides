@@ -1,0 +1,15 @@
+/*******************************
+         Site Overrides
+*******************************/
+#app-left-sidebar {
+  .ui.item.dropdown .trigger {
+  }
+  .ui.floating.label {
+    top: 1em;
+    left: 1.5em;
+  }
+  .ui.vertical.menu .dropdown.item .menu {
+    left: inherit;
+    position: relative;
+  }
+}

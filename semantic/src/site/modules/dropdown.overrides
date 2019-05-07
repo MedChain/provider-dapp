@@ -1,0 +1,9 @@
+/*******************************
+        User Overrides
+*******************************/
+.ui.vertical.menu .dropdown.item:not(.upward) .menu {
+    top: 15px;
+}
+.ui.menu .ui.dropdown .menu>.item a {
+  margin: 0 0 0 1.5em;
+}
