@@ -2,6 +2,8 @@ import React from 'react'
 import { Grid } from 'semantic-ui-react'
 import { FaFile, FaFolder } from 'react-icons/fa';
 import "./vault.css"
+import { connect } from 'react-redux'
+import { metadata } from '../modules/metadata'
 
 // const Window = () => (
 //   <div className="app-right-sidebar-header">
@@ -10,9 +12,8 @@ import "./vault.css"
 //   </div>
 // )
 
-const FileName = (name) => (
-  // Replace hardcoded name with file name from props
-  <h2 className="app-right-sidebar-header">File Metadata</h2>
+const FileName = (props) => (
+  <h2 className="app-right-sidebar-header">{props.path}</h2>
 )
 
 const SelectImage = (fileType) => {
@@ -44,12 +45,13 @@ const MetaDataList = (metaData) => (
 
 const Window = (props) => {
   console.log("Right Sidebar: ", props)
+  console.log("Right Sidebar, path: ", props.path)
 
   //need to add: if nothing is clicked, right sidebar does not appear.  If left sidebar tree or item in main section is clicked, show right sidebar metadata
 
   return (
     <div>
-      <FileName name={props.name}/>
+      <FileName path={props.path}/>
       <hr />
       <div className="right-sidebar-image">
         <SelectImage fileType={props.fileType}/>
@@ -60,4 +62,10 @@ const Window = (props) => {
   )
 }
 
-export default Window
+const mapStateToProps = ({ metadata }) => ({
+  path: metadata.path,
+})
+
+export default connect(
+  mapStateToProps
+)(Window)

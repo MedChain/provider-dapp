@@ -17,36 +17,19 @@ import ControlledPopup from '../../components/ControlledPopup'
 import Tree from './left-sidebar-tree'
 import ArchiveTree from './archive-tree'
 
-const trigger = (label, icon, array) => {
-  const length = array.reduce((a, b) => a + b.count, 0)
-  return (
-    <span className="trigger">
-      <Label color="red" floating pointing="right">
-        {length}
-      </Label>
-      <Icon name={icon} /> {label}
-    </span>
-  )
-}
 
-const menuItem = (category, data) => {
-  const href = '/emr/' + category + '/' + data.label.toLowerCase()
-  return (
-    <Dropdown.Item as="span">
-      <Label color="red" floating pointing="right">
-        {data.count}
-      </Label>
-      <NavLink to={href}>{data.label}</NavLink>
-    </Dropdown.Item>
-  )
-}
 
 const Window = props => {
-  const state = {
-    selectedFile: null
-  }
+  // const state = {
+  //   selectedFile: null
+  // }
 
-  const onSelect = file => this.setState({ selectedFile: file })
+  const onSelect = file => {
+    // this.setState({ selectedFile: file })
+    console.log("clicked tree node")
+    console.log("selected file: ", file)
+    
+  }
 
   return (
     <div className="sidebar-content">
@@ -71,29 +54,7 @@ const Window = props => {
           </ControlledPopup>
           <Tree onSelect={onSelect} />
           <hr></hr>
-          {/* <Dropdown item trigger={trigger('Directory1test', 'hospital', props.data.clinical)} >
-          <Dropdown.Menu>
-            {props.data.clinical.map(function(d, idx){
-              return menuItem('clinical', d)
-             })}
-          </Dropdown.Menu>
-        </Dropdown>
-
-        <Dropdown item trigger={trigger('Directory2', 'stethoscope', props.data.diagnosis)} >
-          <Dropdown.Menu>
-            {props.data.diagnosis.map(function(d, idx){
-              return menuItem('diagnosis', d)
-             })}
-          </Dropdown.Menu>
-        </Dropdown>
-
-        <Dropdown item trigger={trigger('Directory3', 'pills', props.data.medication)} >
-          <Dropdown.Menu>
-            {props.data.medication.map(function(d, idx){
-               return menuItem('medication', d)
-             })}
-          </Dropdown.Menu>
-        </Dropdown> */}
+          
           <ArchiveTree onSelect={onSelect} />
           <hr></hr>
 
@@ -102,16 +63,7 @@ const Window = props => {
             <div class="bar" ></div>
           </div>
           <div className="storage">130.1 GB used (1000 GB total)</div>
-          {/* <Dropdown
-            item
-            trigger={trigger('Archive', 'archive', props.data.archive)}
-            className="archive">
-            <Dropdown.Menu>
-              {props.data.archive.map(function(d, idx) {
-                return menuItem('archive', d)
-              })}
-            </Dropdown.Menu>
-          </Dropdown> */}
+   
         </Sidebar>
 
         <Sidebar.Pusher>
