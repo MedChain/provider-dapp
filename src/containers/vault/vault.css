@@ -28,6 +28,36 @@
   font-size: 14px;
 }
 
+
+/****** right-sidebar ******/
+
+.frame.right-sidebar {
+  width: 13rem;
+  margin-right: .5rem;
+  padding-right: 1.5rem;
+}
+
 .right-sidebar-image {
   text-align: center;
 }
+
+.right-sidebar-grid {
+  font-size: .8em;
+  overflow-wrap: break-word;
+}
+
+.ui two column grid right-sidebar-grid {
+  margin-right: 1rem
+}
+
+.ui.grid>.row {
+  padding-bottom: 0rem;
+}
+
+.ui.grid>.row>.column {
+  padding-right: 0rem;
+}
+
+/* div.column {
+  padding: 0px 0px 0px 5px;
+} */

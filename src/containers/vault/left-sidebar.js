@@ -16,19 +16,14 @@ import {
 import ControlledPopup from '../../components/ControlledPopup'
 import Tree from './left-sidebar-tree'
 import ArchiveTree from './archive-tree'
-
+import { nodeSelect } from '../modules/metadata'
 
 
 const Window = props => {
-  // const state = {
-  //   selectedFile: null
-  // }
 
-  const onSelect = file => {
-    // this.setState({ selectedFile: file })
-    console.log("clicked tree node")
-    console.log("selected file: ", file)
-    
+  const onSelect = node => {
+    console.log("left tree-selected file: ", node)
+    return props.nodeSelect(node)
   }
 
   return (
@@ -74,44 +69,15 @@ const Window = props => {
   )
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  data: {
-    clinical: [
-      { label: 'Subdirectory1', count: 1 },
-      { label: 'Subdirectory2', count: 4 },
-      { label: 'Subdirectory3', count: 54 },
-      { label: 'Subdirectory4', count: 1 },
-      { label: 'Subdirectory5', count: 2 },
-      { label: 'Subdirectory6', count: 4 }
-    ],
-    diagnosis: [
-      { label: 'Subdirectory1', count: 1 },
-      { label: 'Subdirectory2', count: 24 },
-      { label: 'Subdirectory3', count: 4 },
-      { label: 'Subdirectory4', count: 1 },
-      { label: 'Subdirectory5', count: 2 },
-      { label: 'Subdirectory6', count: 4 }
-    ],
-    medication: [
-      { label: 'Subdirectory1', count: 1 },
-      { label: 'Subdirectory2', count: 24 },
-      { label: 'Subdirectory3', count: 54 },
-      { label: 'Subdirectory4', count: 1 },
-      { label: 'Subdirectory5', count: 2 },
-      { label: 'Subdirectory6', count: 4 }
-    ],
-    archive: [
-      { label: 'Subdirectory1', count: 1 },
-      { label: 'Subdirectory2', count: 24 },
-      { label: 'Subdirectory3', count: 54 },
-      { label: 'Subdirectory4', count: 1 },
-      { label: 'Subdirectory5', count: 2 },
-      { label: 'Subdirectory6', count: 4 }
-    ]
-  }
-})
+const mapStateToProps = (state, ownProps) => ({})
 
-const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch)
+const mapDispatchToProps = dispatch => {
+  console.log("dispatch: ", dispatch)
+  return bindActionCreators(
+    { nodeSelect }, 
+    dispatch
+    )
+}
 
 export default connect(
   mapStateToProps,

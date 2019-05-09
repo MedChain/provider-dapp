@@ -1,48 +1,36 @@
-export const FILE_SELECTED = 'metadata/FILE_SELECTED'
+// export const NODE_SELECTED = 'metadata/NODE_SELECTED'
+
+export const NODE_SELECTED = 'NODE_SELECTED'
 
 
 const initialState = {
-  path: "David",
+  node: "Node Metadata",
 }
 
+// reducers
 
 export default (state = initialState, action) => {
   switch(action.type) {
+    case 'NODE_SELECTED':
+      return {
+        ...state,
+        node: action.node,
+        path: action.node.path
+      }
+
     default:
       return state
   }
 }
 
-// //actions
 
-// export const s
+// action creators
 
-
-// //action creator
-// export const selectFile = id => ({
-//   type: 'SELECT_FILE',
-//   id
-// })
-
-
-// //reducers
-// export default (state = initialState, action) => {
-//   switch (action.type) {
-//     case 'SELECT_FILE':
-//       return [
-//         ...state,
-//         {
-//           selectedFile: action.id,
-//         }
-//       ]
-//     default:
-//       return state
-//   }
-// }
-
-// actions
-export const fileSelected = path => {
-  return { type: FILE_SELECTED, path }
+export const nodeSelect = node => {
+  return { 
+    type: NODE_SELECTED, 
+    node 
+  }
 }
 
 
