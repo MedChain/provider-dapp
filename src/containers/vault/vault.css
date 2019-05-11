@@ -37,6 +37,10 @@
   padding-right: 1.5rem;
 }
 
+div > .right-sidebar-folder-icon {
+  margin-left: 30px;
+}
+
 .right-sidebar-image {
   text-align: center;
 }

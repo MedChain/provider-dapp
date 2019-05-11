@@ -4,7 +4,7 @@ export const NODE_SELECTED = 'NODE_SELECTED'
 
 
 const initialState = {
-  node: "Node Metadata",
+  node: {},
 }
 
 // reducers
@@ -15,7 +15,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         node: action.node,
-        path: action.node.path
       }
 
     default:

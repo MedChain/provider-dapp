@@ -36,7 +36,16 @@ const Window = (props) => {
   console.log("Right Sidebar Window props: ", props)
   console.log("Right Sidebar, node: ", props.node.type)
 
-  //need to add: if nothing is clicked, right sidebar does not appear.  If left sidebar tree or item in main section is clicked, show right sidebar metadata
+  if (Object.keys(props.node).length === 0) {
+    return (
+      <div>
+        <p className="right-sidebar-folder-icon">
+          <FaFolder size={60} color="grey" />
+        </p> 
+        <p>Select a file or folder to view its details.</p>
+      </div>
+    )
+  }
 
   return (
     <div>
