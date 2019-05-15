@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import './vault.css'
 import last from 'lodash/last'
 import { FaFile, FaFolder } from 'react-icons/fa'
+import Main from './main'
 
 
 class Window extends Component {
@@ -25,31 +26,37 @@ class Window extends Component {
 
   render() {
     
-    const folder = (path) => {
-      console.log("PATH: ", path)
-      if (typeof path === "string") {
-        return (
-          <div className="vault-main-container1">
-            <div className="vault-main-box">
-              <FaFolder size={25} className="vault-main-icon"/>
-              <span>{last(path.split('/'))}</span>
-            </div>
-            <div className="vault-main-box">
-              <FaFolder size={25} className="vault-main-icon"/>
-              <span>{last(path.split('/'))}</span>
-            </div>
-          </div>
-        )
-      } 
-      return null
-    }
+    // const folder = (path) => {
+    //   console.log("PATH: ", path)
+    //   if (typeof path === "string") {
+    //     return (
+    //       <div className="vault-main-container1">
+    //         <div className="vault-main-box">
+    //           <FaFolder size={25} className="vault-main-icon"/>
+    //           <span>{last(path.split('/'))}</span>
+    //         </div>
+    //         <div className="vault-main-box">
+    //           <FaFolder size={25} className="vault-main-icon"/>
+    //           <span>{last(path.split('/'))}</span>
+    //         </div>
+    //       </div>
+    //     )
+    //   } 
+    //   return (
+    //     <div>
+    //       <h2 className="vault-main-heading">Folders</h2>
+    //       <p>Root folders here</p>
+    //     </div>
+    //   )
+    // }
 
     return (
       <DragAndDrop handleDrop={this.handleDrop}>
         <div id="vault">
-          <h2>Folders</h2>
+          <Main node={this.props.node} />
+          {/* <h2 className="vault-main-heading">Folders</h2>
             {folder(this.props.path)}
-          <h2>Files</h2>
+          <h2 className="vault-main-heading">Files</h2> */}
 
           <FileUpload />
         </div>

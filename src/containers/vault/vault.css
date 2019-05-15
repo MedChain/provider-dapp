@@ -64,6 +64,10 @@ div > .right-sidebar-folder-icon {
 
 /***** vault.js   ****/
 
+.vault-main-heading {
+  font-size: 1.2em;
+}
+
 .vault-main-container1 {
   display: flex;
   flex-wrap: wrap;
