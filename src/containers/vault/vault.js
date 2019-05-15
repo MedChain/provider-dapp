@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import FileUpload from '../../components/FileUpload'
 import DragAndDrop from './drag-and-drop'
+import { connect } from 'react-redux'
 import './vault.css'
+import last from 'lodash/last'
+import { FaFile, FaFolder } from 'react-icons/fa'
+
 
 class Window extends Component {
   state = {
@@ -17,11 +21,36 @@ class Window extends Component {
     this.setState({ files: fileList })
   }
 
+
+
   render() {
+    
+    const folder = (path) => {
+      console.log("PATH: ", path)
+      if (typeof path === "string") {
+        return (
+          <div className="vault-container1">
+            <div className="vault-box">
+              <FaFolder size={30}/>
+              <span>{last(path.split('/'))}</span>
+            </div>
+            <div className="vault-box">
+              <FaFolder size={30}/>
+               <span>{last(path.split('/'))}</span>
+            </div>
+          </div>
+        )
+      } 
+      return null
+    }
+
     return (
       <DragAndDrop handleDrop={this.handleDrop}>
         <div id="vault">
-          <h2>List of files</h2>
+          <h2>Folders</h2>
+            {folder(this.props.path)}
+          <h2>Files</h2>
+
           <FileUpload />
         </div>
       </DragAndDrop>
@@ -29,4 +58,13 @@ class Window extends Component {
   }
 }
 
-export default Window
+const mapStateToProps = ({ nodeMetadata }) => {
+  return ({
+    node: nodeMetadata.node,
+    path: nodeMetadata.node.path
+    })
+}
+
+export default connect(
+  mapStateToProps
+)(Window)

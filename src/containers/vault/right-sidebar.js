@@ -3,6 +3,7 @@ import { Grid } from 'semantic-ui-react'
 import { FaFile, FaFolder } from 'react-icons/fa';
 import "./vault.css"
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
 
 
 const FileName = (props) => (
@@ -66,6 +67,10 @@ const mapStateToProps = ({ nodeMetadata }) => {
     node: nodeMetadata.node,
     })
 }
+
+Window.propTypes = {
+  node: PropTypes.object.isRequired,
+};
 
 export default connect(
   mapStateToProps
