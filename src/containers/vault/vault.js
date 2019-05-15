@@ -29,14 +29,14 @@ class Window extends Component {
       console.log("PATH: ", path)
       if (typeof path === "string") {
         return (
-          <div className="vault-container1">
-            <div className="vault-box">
-              <FaFolder size={30}/>
+          <div className="vault-main-container1">
+            <div className="vault-main-box">
+              <FaFolder size={25} className="vault-main-icon"/>
               <span>{last(path.split('/'))}</span>
             </div>
-            <div className="vault-box">
-              <FaFolder size={30}/>
-               <span>{last(path.split('/'))}</span>
+            <div className="vault-main-box">
+              <FaFolder size={25} className="vault-main-icon"/>
+              <span>{last(path.split('/'))}</span>
             </div>
           </div>
         )

@@ -64,14 +64,26 @@ div > .right-sidebar-folder-icon {
 
 /***** vault.js   ****/
 
-.vault-container1 {
+.vault-main-container1 {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  background: yellow;
 }
 
-.vault-box {
-  flex-basis: 60%;
-  border: 1px grey solid;
+.vault-main-box {
+  margin-right: 20px;
+  border: 1px #ccc solid;
+  border-radius: 5px; 
+  width: 220px;
+  height: 40px;
+  padding: 6px;
 }
+
+.vault-main-icon {
+  position: relative;
+  top: 5px;
+  color: #808080;
+}
+.vault-main-box > span {
+  margin: 10px;
+}
+
