@@ -29,7 +29,19 @@ const data = {
     path: '/parentFolder2',
     type: 'folder',
     isRoot: true,
-    children: []
+    children: ['/parentFolder2/childFolder1']
+  },
+  '/parentFolder2/childFolder1': {
+    folderId: 1,
+    path: '/parentFolder2/childFolder1',
+    type: 'folder',
+    children: ['/parentFolder2/childFolder1/file-1']
+  },
+  '/parentFolder2/childFolder1/file-1': {
+    fileId: 1,
+    path: '/parentFolder2/childFolder1/file-1',
+    type: 'file',
+    children: ['/parentFolder2/childFolder1/file-1']
   },
   '/parentFolder3': {
     userId: 3,
