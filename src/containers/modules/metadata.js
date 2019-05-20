@@ -1,10 +1,14 @@
+import data from './dummyData'
+
 // export const NODE_SELECTED = 'metadata/NODE_SELECTED'
 
 export const NODE_SELECTED = 'NODE_SELECTED'
+export const ALL_NODES_SELECTED = 'ALL_NODES_SELECTED'
 
 
 const initialState = {
   node: {},
+  nodes: data,
 }
 
 // reducers
@@ -16,6 +20,13 @@ export default (state = initialState, action) => {
         ...state,
         node: action.node,
       }
+
+    case 'ALL_NODES_SELECTED':
+      return {
+        ...state,
+        nodes: action.nodes,
+      }
+  
 
     default:
       return state
@@ -34,3 +45,9 @@ export const nodeSelect = node => {
 
 
 
+export const allNodesSelect = nodes => {
+  return {
+    type: ALL_NODES_SELECTED,
+    nodes
+  }
+}

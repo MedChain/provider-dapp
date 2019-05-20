@@ -25,7 +25,7 @@ class Window extends Component {
       <DragAndDrop handleDrop={this.handleDrop}>
         <div id="vault">
           <FileUpload />
-          <Main node={this.props.node} />
+          <Main node={this.props.node} nodes={this.props.nodes} />
         </div>
       </DragAndDrop>
     )
@@ -35,7 +35,8 @@ class Window extends Component {
 const mapStateToProps = ({ nodeMetadata }) => {
   return ({
     node: nodeMetadata.node,
-    path: nodeMetadata.node.path
+    path: nodeMetadata.node.path,
+    nodes: nodeMetadata.nodes,
     })
 }
 

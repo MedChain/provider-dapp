@@ -1,46 +1,89 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './vault.css'
 import last from 'lodash/last'
 import { FaFile, FaFolder } from 'react-icons/fa'
+import rootNodes from './rootNodes'
 
 
-const Folder = (props) => {
-  const path = props.node.path
-  console.log("PATH: ", props.node.path)
+const CreateFolder = (props) => {
+  const { nodes } = props
+
+  console.log("MAIN nodes issues: ", nodes)
+  
+  const folder = nodes.map((node, i) => {
+    return (
+      <div className="vault-main-box">
+        <FaFolder className="vault-main-icon"/>
+        <span>{last(node.path.split('/'))}</span>
+      </div>
+    )
+  })
+  return (
+    <React.Fragment>
+      {folder}
+    </React.Fragment>
+  )
+}
+
+const RootFolders = (props) => {
+  const { nodes } = props
+  const roots = rootNodes(nodes)
+
+  console.log("ROOTS in MAIN: ", roots)
+
+  return (
+    <React.Fragment>
+      <h2 className="vault-main-heading">Folders</h2>
+      <CreateFolder nodes={roots} />
+    </React.Fragment>
+  )
+}
+
+const Folders = (props) => {
+  const { path, children } = props.node
 
   if (typeof path === "string") {
-    return (
-      <React.Fragment>
-        <h2 className="vault-main-heading">Folders</h2>
-        <div className="vault-main-container1">
+
+    if (children.length > 0) {
+      const child = children.map((child, i) => {
+        return (
           <div className="vault-main-box">
-            <FaFolder size={25} className="vault-main-icon"/>
-            <span>{last(path.split('/'))}</span>
+            <FaFolder className="vault-main-icon"/>
+            <span>{last(child.split('/'))}</span>
           </div>
-          <div className="vault-main-box">
-            <FaFolder size={25} className="vault-main-icon"/>
-            <span>{last(path.split('/'))}</span>
+        )
+      })
+      return (
+        <React.Fragment>
+          <h2 className="vault-main-heading">Folders</h2>
+          <div className="vault-main-container1">
+            {child}
+            {/* <div className="vault-main-box">
+              <FaFolder className="vault-main-icon"/>
+              <span>{last(path.split('/'))}</span>
+            </div>
+            <div className="vault-main-box">
+              <FaFolder className="vault-main-icon"/>
+              <span>{last(path.split('/'))}</span>
+            </div> */}
           </div>
-        </div>
-      </React.Fragment>
-    )
+        </React.Fragment>       
+      )
+    }
   } 
-  return (
-    <div>
-      <h2 className="vault-main-heading">Folders</h2>
-      <p>Root folders here</p>
-    </div>
-  )
 }
 
 const Main = (props) => {
 
-  return (
-    <React.Fragment>
-      <Folder node={props.node}/>
-      <h2 className="vault-main-heading">Files</h2>
-    </React.Fragment>
-  )
+  if (props.nodes.path !== "string") {
+
+    return <RootFolders nodes={props.nodes} /> 
+
+  } else {
+
+    return <Folders node={props.node} nodes={props.nodes} />
+
+  }
 }
 
 

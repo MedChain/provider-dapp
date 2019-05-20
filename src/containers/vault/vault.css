@@ -86,6 +86,7 @@ div > .right-sidebar-folder-icon {
   position: relative;
   top: 5px;
   color: #808080;
+  font-size: 25px; 
 }
 .vault-main-box > span {
   margin: 10px;
