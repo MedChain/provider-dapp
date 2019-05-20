@@ -1,19 +1,9 @@
 import React, { Component } from 'react'
-import values from 'lodash/values'
 import PropTypes from 'prop-types'
 import TreeNode from './left-sidebar-tree-node'
 
 
 export default class Tree extends Component {
-
-  // componentDidMount = () => {
-  //   this.getRootNodes()
-  // }
-
-  // getRootNodes = () => {
-  //   const { nodes } = this.props
-  //   return values(nodes).filter(node => node.isRoot === true)
-  // }
 
   getChildNodes = node => {
     const { nodes } = this.props

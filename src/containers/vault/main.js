@@ -7,12 +7,12 @@ import rootNodes from './rootNodes'
 
 const CreateFolder = (props) => {
   const { nodes } = props
-
-  console.log("MAIN nodes issues: ", nodes)
   
+  // Change i when unique key can be determined
+
   const folder = nodes.map((node, i) => {
     return (
-      <div className="vault-main-box">
+      <div key={i} className="vault-main-box">
         <FaFolder className="vault-main-icon"/>
         <span>{last(node.path.split('/'))}</span>
       </div>
@@ -34,7 +34,9 @@ const RootFolders = (props) => {
   return (
     <React.Fragment>
       <h2 className="vault-main-heading">Folders</h2>
-      <CreateFolder nodes={roots} />
+      <div className="vault-main-container1">
+        <CreateFolder nodes={roots} />
+      </div>
     </React.Fragment>
   )
 }

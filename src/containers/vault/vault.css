@@ -75,6 +75,7 @@ div > .right-sidebar-folder-icon {
 
 .vault-main-box {
   margin-right: 20px;
+  margin-top: 10px;
   border: 1px #ccc solid;
   border-radius: 5px; 
   width: 220px;

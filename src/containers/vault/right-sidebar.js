@@ -3,11 +3,12 @@ import { Grid } from 'semantic-ui-react'
 import { FaFile, FaFolder } from 'react-icons/fa';
 import "./vault.css"
 import { connect } from 'react-redux'
+import last from 'lodash/last'
 import PropTypes from 'prop-types';
 
 
 const FileName = (props) => (
-  <h2 className="app-right-sidebar-header">{props.type}</h2>
+  <h2 className="app-right-sidebar-header">{last(props.path.split('/'))}</h2>
 )
 
 const SelectImage = (props) => {
@@ -50,7 +51,7 @@ const Window = (props) => {
 
   return (
     <div>
-      <FileName type={props.node.type}/>
+      <FileName path={props.node.path}/>
       <hr />
       <div className="right-sidebar-image">
         <SelectImage type={props.node.type}/>
