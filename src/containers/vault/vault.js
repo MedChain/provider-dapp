@@ -22,12 +22,14 @@ class Window extends Component {
 
   render() {
     return (
-      <DragAndDrop handleDrop={this.handleDrop}>
-        <div id="vault">
-          <FileUpload />
-          <Main node={this.props.node} nodes={this.props.nodes} />
-        </div>
-      </DragAndDrop>
+      <React.Fragment>
+        <Main node={this.props.node} nodes={this.props.nodes} />
+        <DragAndDrop handleDrop={this.handleDrop}>
+          <div id="vault">
+            <FileUpload />
+          </div>
+        </DragAndDrop>
+      </React.Fragment>
     )
   }
 }

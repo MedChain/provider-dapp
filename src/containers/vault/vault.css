@@ -64,6 +64,12 @@ div > .right-sidebar-folder-icon {
 
 /***** vault.js   ****/
 
+main {
+  top: 100px;
+  left: 270px;
+  right: 190px;
+}
+
 .vault-main-heading {
   font-size: 1.2em;
 }
@@ -73,14 +79,13 @@ div > .right-sidebar-folder-icon {
   flex-wrap: wrap;
 }
 
-.vault-main-box {
+.vault-main-button {
   margin-right: 20px;
   margin-top: 10px;
   border: 1px #ccc solid;
   border-radius: 5px; 
   width: 220px;
   height: 40px;
-  padding: 6px;
 }
 
 .vault-main-icon {
@@ -89,10 +94,11 @@ div > .right-sidebar-folder-icon {
   color: #808080;
   font-size: 25px; 
 }
-.vault-main-box > span {
+.vault-main-button > span {
   margin: 10px;
 }
 
 .vault-main-message {
   font-size: 24px;
 }
+
