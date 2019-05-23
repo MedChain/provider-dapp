@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import FileUpload from '../../components/FileUpload'
 import DragAndDrop from './drag-and-drop'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { nodeSelect } from '../modules/metadata'
 import './vault.css'
 import Main from './main'
 
@@ -20,10 +22,22 @@ class Window extends Component {
     this.setState({ files: fileList })
   }
 
+  handleClick = (fileName, e) => {
+    e.preventDefault()
+    const { nodes, nodeSelect } = this.props
+    console.log("Handle Click Name: ", fileName)
+    const selectedNode = nodes[fileName]
+    return nodeSelect(selectedNode)
+  }
+
   render() {
+    console.log("props vault: ", this.props)
+
+    const { node, nodes, handleClick } = this.props
+
     return (
       <React.Fragment>
-        <Main node={this.props.node} nodes={this.props.nodes} />
+        <Main node={node} nodes={nodes} handleClick={this.handleClick} />
         <DragAndDrop handleDrop={this.handleDrop}>
           <div id="vault">
             <FileUpload />
@@ -41,7 +55,14 @@ const mapStateToProps = ({ nodeMetadata }) => {
     nodes: nodeMetadata.nodes,
     })
 }
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    { nodeSelect }, 
+    dispatch
+  )
+}
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Window)

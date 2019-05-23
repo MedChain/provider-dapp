@@ -67,7 +67,8 @@ div > .right-sidebar-folder-icon {
 main {
   top: 100px;
   left: 270px;
-  right: 190px;
+  right: 200px;
+  padding: 10px;
 }
 
 .vault-main-heading {
