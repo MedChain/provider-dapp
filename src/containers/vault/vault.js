@@ -22,22 +22,25 @@ class Window extends Component {
     this.setState({ files: fileList })
   }
 
-  handleClick = (fileName, e) => {
-    e.preventDefault()
+  handleDoubleClick = (fileName, e) => {
     const { nodes, nodeSelect } = this.props
-    console.log("Handle Click Name: ", fileName)
+    console.log("Handle DoubleClick Name: ", fileName)
     const selectedNode = nodes[fileName]
     return nodeSelect(selectedNode)
+  }
+
+  handleClick = () => {
+    console.log("HandleClick for single click")
   }
 
   render() {
     console.log("props vault: ", this.props)
 
-    const { node, nodes, handleClick } = this.props
+    const { node, nodes } = this.props
 
     return (
       <React.Fragment>
-        <Main node={node} nodes={nodes} handleClick={this.handleClick} />
+        <Main node={node} nodes={nodes} handleDoubleClick={this.handleDoubleClick} handleClick={this.handleClick}/>
         <DragAndDrop handleDrop={this.handleDrop}>
           <div id="vault">
             <FileUpload />

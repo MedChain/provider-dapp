@@ -5,7 +5,7 @@ import { FaFile, FaFolder } from 'react-icons/fa'
 import rootNodes from './rootNodes'
 
 const CreateFolder = (props) => {
-  const { nodeNames, nodes, handleClick } = props
+  const { nodeNames, nodes, handleDoubleClick, handleClick } = props
   
   // const handleClick = (fileName) => {
   //   console.log("File Data: ", nodes[fileName])
@@ -16,7 +16,7 @@ const CreateFolder = (props) => {
   const folders = nodeNames.map((path, i) => {
     const fileName = last(path.split('/'))
     return (
-      <button key={i} type="button" className="vault-main-button" onClick={(e) => handleClick(path, e)}>
+      <button key={i} type="button" className="vault-main-button" onDoubleClick={(e) => handleDoubleClick(path, e)} onClick={() => handleClick()}>
         <FaFolder className="vault-main-icon"/>  
         <span >{fileName}</span>
       </button>
@@ -30,14 +30,14 @@ const CreateFolder = (props) => {
 }
 
 const RootFolders = (props) => {
-  const { nodes, handleClick } = props
+  const { nodes, handleDoubleClick, handleClick } = props
   const roots = rootNodes(nodes).map(node => node.path)
 
   return (
     <React.Fragment>
       <h2 className="vault-main-heading">Folders</h2>
       <div className="vault-main-container1">
-        <CreateFolder nodeNames={roots} nodes={nodes} handleClick={handleClick}/>
+        <CreateFolder nodeNames={roots} nodes={nodes} handleDoubleClick={handleDoubleClick} handleClick={handleClick}/>
       </div>
     </React.Fragment>
   )
@@ -45,13 +45,13 @@ const RootFolders = (props) => {
 
 const Folders = (props) => {
   const { children } = props.node
-  const { nodes, handleClick } = props
+  const { nodes, handleDoubleClick, handleClick } = props
   console.log("Children: ", children)
   return (
     <React.Fragment>
     <h2 className="vault-main-heading">Folders</h2>
     <div className="vault-main-container1">
-      <CreateFolder nodeNames={children} nodes={nodes} handleClick={handleClick}/>
+      <CreateFolder nodeNames={children} nodes={nodes} handleDoubleClick={handleDoubleClick} handleClick={handleClick}/>
     </div>
   </React.Fragment>
   )
@@ -62,16 +62,16 @@ const Main = (props) => {
   console.log("NODES in Main: ", props.nodes)
   console.log("main props: ", props)
 
-  const { node, nodes, handleClick } = props
+  const { node, nodes, handleDoubleClick, handleClick } = props
   const { children } = props.node
 
   if (children === undefined) {
 
-    return <RootFolders nodes={nodes} handleClick={handleClick}/> 
+    return <RootFolders nodes={nodes} handleDoubleClick={handleDoubleClick} handleClick={handleClick}/> 
 
   } else if (children.length > 0) {
 
-    return <Folders node={node} nodes={nodes} handleClick={handleClick}/>
+    return <Folders node={node} nodes={nodes} handleDoubleClick={handleDoubleClick}  handleClick={handleClick}/>
 
   } else {
     return <p className="vault-main-message">Empty Folder</p>
