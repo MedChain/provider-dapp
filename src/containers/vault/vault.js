@@ -3,7 +3,7 @@ import FileUpload from '../../components/FileUpload'
 import DragAndDrop from './drag-and-drop'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { nodeSelect } from '../modules/metadata'
+import { nodeSelect, mainNodeSelect } from '../modules/metadata'
 import './vault.css'
 import Main from './main'
 
@@ -23,24 +23,24 @@ class Window extends Component {
   }
 
   handleDoubleClick = (fileName, e) => {
-    const { nodes, nodeSelect } = this.props
-    console.log("Handle DoubleClick Name: ", fileName)
+    const { nodes, nodeSelect, mainNodeSelect } = this.props
     const selectedNode = nodes[fileName]
-    return nodeSelect(selectedNode)
+    nodeSelect(selectedNode)
+    mainNodeSelect(selectedNode)
   }
 
-  handleClick = () => {
-    console.log("HandleClick for single click")
+  handleClick = (fileName) => {
+    const { nodes, nodeSelect } = this.props
+    const selectedNode = nodes[fileName]
+    nodeSelect(selectedNode)
   }
 
   render() {
-    console.log("props vault: ", this.props)
-
-    const { node, nodes } = this.props
+    const { node, mainNode, nodes } = this.props
 
     return (
       <React.Fragment>
-        <Main node={node} nodes={nodes} handleDoubleClick={this.handleDoubleClick} handleClick={this.handleClick}/>
+        <Main node={node} mainNode={mainNode} nodes={nodes} handleDoubleClick={this.handleDoubleClick} handleClick={this.handleClick}/>
         <DragAndDrop handleDrop={this.handleDrop}>
           <div id="vault">
             <FileUpload />
@@ -54,13 +54,15 @@ class Window extends Component {
 const mapStateToProps = ({ nodeMetadata }) => {
   return ({
     node: nodeMetadata.node,
-    path: nodeMetadata.node.path,
+    // path: nodeMetadata.node.path,
+    mainNode: nodeMetadata.mainNode,
+    // mainPath: nodeMetadata.mainNode.path,
     nodes: nodeMetadata.nodes,
     })
 }
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { nodeSelect }, 
+    { nodeSelect, mainNodeSelect }, 
     dispatch
   )
 }

@@ -6,17 +6,12 @@ import rootNodes from './rootNodes'
 
 const CreateFolder = (props) => {
   const { nodeNames, nodes, handleDoubleClick, handleClick } = props
-  
-  // const handleClick = (fileName) => {
-  //   console.log("File Data: ", nodes[fileName])
-  //   return nodes[fileName]
-  // }
 
   // Change i when unique key can be determined
   const folders = nodeNames.map((path, i) => {
     const fileName = last(path.split('/'))
     return (
-      <button key={i} type="button" className="vault-main-button" onDoubleClick={(e) => handleDoubleClick(path, e)} onClick={() => handleClick()}>
+      <button key={i} type="button" className="vault-main-button" onDoubleClick={(e) => handleDoubleClick(path, e)} onClick={() => handleClick(path)}>
         <FaFolder className="vault-main-icon"/>  
         <span >{fileName}</span>
       </button>
@@ -44,9 +39,11 @@ const RootFolders = (props) => {
 }
 
 const Folders = (props) => {
-  const { children } = props.node
+  const { children } = props.mainNode
+  // const { children } = props.node
   const { nodes, handleDoubleClick, handleClick } = props
   console.log("Children: ", children)
+  console.log("mainNode children: ", props.mainNode)
   return (
     <React.Fragment>
     <h2 className="vault-main-heading">Folders</h2>
@@ -60,10 +57,13 @@ const Folders = (props) => {
 const Main = (props) => {
   console.log("NODE in Main: ", props.node)
   console.log("NODES in Main: ", props.nodes)
+  console.log("Main Node in main: ", props.mainNode)
+  console.log("Children in Main: ", props.mainNode.children)
   console.log("main props: ", props)
 
-  const { node, nodes, handleDoubleClick, handleClick } = props
-  const { children } = props.node
+  const { node, mainNode, nodes, handleDoubleClick, handleClick } = props
+  // const { children } = props.node
+  const { children } = props.mainNode
 
   if (children === undefined) {
 
@@ -71,7 +71,7 @@ const Main = (props) => {
 
   } else if (children.length > 0) {
 
-    return <Folders node={node} nodes={nodes} handleDoubleClick={handleDoubleClick}  handleClick={handleClick}/>
+    return <Folders node={node} mainNode={mainNode} nodes={nodes} handleDoubleClick={handleDoubleClick}  handleClick={handleClick}/>
 
   } else {
     return <p className="vault-main-message">Empty Folder</p>

@@ -13,7 +13,7 @@ import {
 import ControlledPopup from '../../components/ControlledPopup'
 import Tree from './left-sidebar-tree'
 import ArchiveTree from './archive-tree'
-import { nodeSelect, allNodesSelect } from '../modules/metadata'
+import { nodeSelect, mainNodeSelect, allNodesSelect } from '../modules/metadata'
 import rootNodes from './rootNodes'
 
 
@@ -21,8 +21,9 @@ const Window = props => {
   
   console.log("left-sidebar PROPS: ", props)
 
-  const onSelect = node => {
-    return props.nodeSelect(node)
+  const onSelect = treeNode => {
+    props.nodeSelect(treeNode)
+    props.mainNodeSelect(treeNode)
   }
 
   const roots = rootNodes(props.nodes)
@@ -79,7 +80,7 @@ const mapStateToProps = ({ nodeMetadata }, ownProps) => {
 const mapDispatchToProps = dispatch => {
   console.log("dispatch: ", dispatch)
   return bindActionCreators(
-    { nodeSelect, allNodesSelect }, 
+    { nodeSelect, mainNodeSelect, allNodesSelect }, 
     dispatch
     )
 }

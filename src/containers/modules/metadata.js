@@ -3,11 +3,13 @@ import data from './dummyData'
 // export const NODE_SELECTED = 'metadata/NODE_SELECTED'
 
 export const NODE_SELECTED = 'NODE_SELECTED'
+export const MAIN_NODE_SELECTED = 'MAIN_NODE_SELECTED'
 export const ALL_NODES_SELECTED = 'ALL_NODES_SELECTED'
 
 
 const initialState = {
   node: {},
+  mainNode: {},
   nodes: data,
 }
 
@@ -21,13 +23,18 @@ export default (state = initialState, action) => {
         node: action.node,
       }
 
+    case 'MAIN_NODE_SELECTED':
+      return {
+        ...state,
+        mainNode: action.mainNode,
+      }
+
     case 'ALL_NODES_SELECTED':
       return {
         ...state,
         nodes: action.nodes,
       }
   
-
     default:
       return state
   }
@@ -43,7 +50,12 @@ export const nodeSelect = node => {
   }
 }
 
-
+export const mainNodeSelect = mainNode => {
+  return {
+    type: MAIN_NODE_SELECTED,
+    mainNode
+  }
+}
 
 export const allNodesSelect = nodes => {
   return {
