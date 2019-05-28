@@ -23,6 +23,7 @@ class PatientSelector extends React.Component {
 
   handleInputChange = (newValue: string) => {
     const inputValue = newValue.value;
+    console.log(inputValue);
     this.props.switchPatient(inputValue);
     return inputValue;
   }
@@ -34,6 +35,7 @@ class PatientSelector extends React.Component {
       value: this.props.patients[key].id,
       label: this.props.patients[key].firstname + " " + this.props.patients[key].lastname,
     }));
+    console.log(optionItems)
     if (optionItems.length > 0) {
       console.log('this.props.patients=', this.props.patients);
     } else {
@@ -42,7 +44,49 @@ class PatientSelector extends React.Component {
     callback(filterResults(inputValue));
   }
 
-  render() {
+  render() {    
+    const customStyles = {
+      control: (base, state) => ({
+        ...base,
+        // match with the menu
+        borderRadius: state.isFocused ? "3px 3px 0 0" : 3,
+        // Overwrittes the different states of border
+        borderColor: state.isFocused ? "yellow" : "green",
+        // Removes weird border around container
+        boxShadow: state.isFocused ? null : null,
+        "&:hover": {
+          // Overwrittes the different states of border
+          borderColor: state.isFocused ? "red" : "blue"
+        }
+      }),
+      menu: base => ({
+        ...base,
+        // Get the dropdown to scroll
+        overflow: "scroll",
+        // override border radius to match the box
+        borderRadius: 0,
+        // beautify the word cut by adding a dash see https://caniuse.com/#search=hyphens for the compatibility
+        hyphens: "auto",
+        // kill the gap
+        marginTop: 0,
+        textAlign: "left",
+        // prevent menu to scroll y
+        padding: 0,
+        height: 300,
+        wordWrap: "break-word"
+      }),
+      container: base => ({
+        ...base,
+        height: 30,
+      }),
+      menuList: base => ({
+        ...base,
+        // kill the white space on first and last option
+        padding: 0,
+        height: 300,
+      })
+    };
+
     return (
       <div className="patient-selector">
         <AsyncSelect
@@ -50,6 +94,7 @@ class PatientSelector extends React.Component {
           loadOptions={this.loadOptions}
           defaultOptions
           onChange={this.handleInputChange}
+          styles={customStyles}
         />
       </div>
     );

@@ -1,10 +1,14 @@
 import React from 'react'
+import CreateRecord from '../create-record/create-record.js'
+
 
 import './emr.css'
 
 const Window = () => (
   <div id="emr">
-    EMR content:
+    <CreateRecord />
+  </div>
+    /* EMR content:
     <ul>
       <li>Clinical</li>
       <ol>
@@ -41,9 +45,7 @@ const Window = () => (
         <li>Immunization</li>
         <li>ImmunizationRecommendation</li>
       </ol>
-    </ul>
-  </div>
-
+    </ul>*/
 )
 
 export default Window

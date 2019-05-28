@@ -116,6 +116,7 @@ export const apiGetPatientList = () => {
 }
 
 export const switchPatient = patientId => {
+  console.log(patientId);
   return dispatch => {
     dispatch({
       type: SWITCH_PATIENT,
