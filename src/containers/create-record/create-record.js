@@ -84,20 +84,40 @@ const CreateRecord = () => (
                 placeholder="State"
             />
         </Form.Group>
-
-        {/* {/* <Form.RadioGroup
-          name="size"
-          required
-          label="Size"
-          errorLabel={ <Label color="red" pointing="left"/> }
-          validationErrors={{
-            isDefaultRequiredValue: 'Size is Required',
-          }}
-        > }
-          <Form.Radio label="Small" value="sm"/>
-          <Form.Radio label="Medium" value="md"/>
-          <Form.Radio label="Large" value="lg"/>
-        </Form.RadioGroup> */}
+        <Form.Group>
+            <Form.Input 
+                name="height"
+                label="Height (Inches)"
+                placeholder="000"
+            />
+            <Form.Input 
+                name="weight"
+                label="Weight (Pounds)"
+                placeholder="000"
+            />
+        </Form.Group>
+        <Form.Group>    
+            <Form.Input 
+                name="heartRate"
+                label="Heart Rate"
+                placeholder="000"
+            />
+            <Form.Input 
+                name="bloodPressure"
+                label="BP"
+                placeholder="000/000"
+            />
+            <Form.Input 
+                name="temp"
+                label="Temperature"
+                placeholder="000"
+            />
+            <Form.Input 
+                name="respiratoryRate"
+                label="Respiratory Rate"
+                placeholder="000"
+            />
+        </Form.Group>
 
         <Form.TextArea
           name="visitNotes"
@@ -109,16 +129,6 @@ const CreateRecord = () => (
             isDefaultRequiredValue: 'Please enter patient notes.',
           }}
         />
-
-        {/* <Form.Checkbox
-          name="terms"
-          label="I agree to the Terms and Conditions"
-          validations="isTrue"
-          errorLabel={ <Label color="red" pointing="left"/> }
-          validationErrors={{
-            isTrue: 'You\'ll have to agree to the Terms and Conditions',
-          }}
-        /> */}
 
         <Form.Group>
           <Form.Button content="Save" color="green"/>
