@@ -9,3 +9,7 @@
 #emr {
     margin: 2rem 0 0 2rem;
 }
+
+main {
+    overflow: visible;
+}

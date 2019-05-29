@@ -1,5 +1,6 @@
 .frame {
   bottom: -7rem;
+  overflow: visible;
 }
 
 .frame.header {
