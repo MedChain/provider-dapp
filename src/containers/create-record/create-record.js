@@ -4,6 +4,7 @@ import {
   } from 'formsy-semantic-ui-react';
 import { Label } from 'semantic-ui-react';
 
+
 import '../emr/emr.css'
 
 const min = 10000;
@@ -21,7 +22,7 @@ const genderOptions = [
 
 const CreateRecord = () => (
     <div id='createRecord'>
-        <label><strong>{'Patient ID: ' + parseInt(Math.random() * (max-min) + min) }</strong></label>
+        <label><strong>{'Patient ID: ' + calculateID(min, max) }</strong></label>
         <Form
         ref={ ref => this.form = ref }
         onValidSubmit={ this.onValidSubmit }
