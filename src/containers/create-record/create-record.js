@@ -3,9 +3,13 @@ import {
     Form, Input, TextArea, Checkbox, Radio, RadioGroup, Dropdown, Select,
   } from 'formsy-semantic-ui-react';
 import { Label } from 'semantic-ui-react';
-
-
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import '../emr/emr.css'
+
+import {
+  apiPostPatient,
+} from '../modules/patient'
 
 const min = 10000;
 const max = 100000;
@@ -20,18 +24,18 @@ const genderOptions = [
     {text: "Female", value: 'female'},
 ];
 
-const CreateRecord = () => (
+const RecordForm = () => (
     <div id='createRecord'>
-        <label><strong>{'Patient ID: ' + calculateID(min, max) }</strong></label>
+        <label><strong>{'Patient ID: ' + this }</strong></label>
         <Form
         ref={ ref => this.form = ref }
-        onValidSubmit={ this.onValidSubmit }
       >
         <Form.Group widths="equal">
           <Form.Input
             required
             name="firstName"
             label="First name"
+            value="Robert"
             placeholder="First name"
             validations="isWords"
             errorLabel={ <Label color="red" pointing/> }
@@ -139,4 +143,47 @@ const CreateRecord = () => (
     </div>
 )
 
-export default CreateRecord
+class CreateRecord extends React.Component {
+  constructor(props) {
+    super(props)
+    console.log(this);
+    // Remember! This binding is necessary to make `this` work in the callback
+    this.setFormApi = this.setFormApi.bind(this)
+    this.submitForm = this.submitForm.bind(this)
+  }
+
+  render() {
+    console.log(this.props)
+    this.props.patient &&
+      this.formApi &&
+      this.formApi.setValues(this.props.patient)
+
+    return (
+      <RecordForm
+      getApi={this.setFormApi}
+      onSubmit={this.submitForm}
+      />
+    )
+  }
+}
+
+const mapStateToProps = ({ patient }) => ({
+  patient: patient.patients[patient.currentPatient] || null,
+  currentPatient: patient.currentPatient,
+})
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({
+      apiPostPatient,
+    },
+    dispatch
+  )
+
+export default 
+RecordForm
+connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CreateRecord)
+
+ 
