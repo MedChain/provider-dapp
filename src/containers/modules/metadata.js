@@ -1,16 +1,30 @@
-import data from './dummyData'
+import childFolders from './children'
+
+// import data from './dummyData'
 
 // export const NODE_SELECTED = 'metadata/NODE_SELECTED'
 
 export const NODE_SELECTED = 'NODE_SELECTED'
 export const MAIN_NODE_SELECTED = 'MAIN_NODE_SELECTED'
 export const ALL_NODES_SELECTED = 'ALL_NODES_SELECTED'
+export const CHILDREN_SELECTED = 'CHILDREN_SELECTED'
 
+
+const apiURL = 'http://localhost:3000/vault/'
 
 const initialState = {
   node: {},
   mainNode: {},
-  nodes: data,
+  nodes: {},
+  children: {},
+}
+
+function handleErrors(response) {
+  if (!response.ok) {
+    console.log('ERROR', response)
+    throw Error(response.statusText)
+  }
+  return response
 }
 
 // reducers
@@ -33,6 +47,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         nodes: action.nodes,
+      }
+    
+    case 'CHILDREN_SELECTED':
+      return {
+        ...state,
+        children: action.children,
       }
   
     default:
@@ -57,9 +77,34 @@ export const mainNodeSelect = mainNode => {
   }
 }
 
-export const allNodesSelect = nodes => {
-  return {
-    type: ALL_NODES_SELECTED,
-    nodes
+//mode cors, had to make change to api, add to app.get:  res.setHeader('Access-Control-Allow-Origin', '*');
+
+export const allNodesSelect = () => {
+  return dispatch => {
+    return fetch(apiURL, {
+      method: 'GET',
+      mode: 'cors'
+    })
+      .then(handleErrors)
+      .then(response => {
+        // console.log('RESPONSE', response)
+        return response.json()})
+      .then(nodes => {
+          // console.log('ALL NODES SELECT', nodes)
+          dispatch({
+            type: ALL_NODES_SELECTED,
+            nodes: nodes.map(node => {
+              return { 
+                ...node,
+                type: "folder"
+              }
+            })
+          })
+          dispatch({
+            type: CHILDREN_SELECTED,
+            children: childFolders(nodes)
+          })
+        }
+      ) 
   }
 }

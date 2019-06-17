@@ -6,15 +6,18 @@ import TreeNode from './left-sidebar-tree-node'
 export default class Tree extends Component {
 
   getChildNodes = node => {
-    const { nodes } = this.props
-    if (!node.children) return []
-    return node.children.map(path => nodes[path])
+    const { children } = this.props
+    if (children[node.name] === []) return []
+    return children[node.name]
   }
 
   onToggle = node => {
     const { nodes } = this.props
-    nodes[node.path].isOpen = !node.isOpen
+    console.log("find: ", nodes.find(folder => folder.name === node.name))
+    nodes.find(folder => folder.name === node.name).isOpen = !node.isOpen
+    // nodes[node.name].isOpen = !node.isOpen
     this.setState({ nodes })
+
   }
 
   onNodeSelect = node => {
@@ -23,12 +26,12 @@ export default class Tree extends Component {
   }
 
   render() {
-    console.log("THIS.PROPS sidebar tree: ", this.props)
-    const rootNodes = this.props.rootNodes
+    const { rootNodes, nodes } = this.props
     return (
       <div>
         {rootNodes.map(node => (
           <TreeNode
+            nodes={nodes}
             node={node}
             getChildNodes={this.getChildNodes}
             onToggle={this.onToggle}

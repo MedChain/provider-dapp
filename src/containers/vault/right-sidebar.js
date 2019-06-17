@@ -7,9 +7,9 @@ import last from 'lodash/last'
 import PropTypes from 'prop-types';
 
 
-const FileName = (props) => (
-  <h2 className="app-right-sidebar-header">{last(props.path.split('/'))}</h2>
-)
+const FileName = (props) => {
+  return <h2 className="app-right-sidebar-header">{last(props.name.split('/'))}</h2>
+}
 
 const SelectImage = (props) => {
   // Add option of folder icon image or file icon depending on file type
@@ -25,19 +25,20 @@ const MetaDataList = (props) => (
     </Grid.Row>
     <Grid.Row>
       <Grid.Column>Location</Grid.Column>
-      <Grid.Column>{props.node.path}</Grid.Column>
+      <Grid.Column>{props.node.name}</Grid.Column>
     </Grid.Row>
     <Grid.Row>
-      <Grid.Column>Size</Grid.Column>
-      <Grid.Column>1 GB</Grid.Column>
+      <Grid.Column>Created</Grid.Column>
+      <Grid.Column>{props.node.created}</Grid.Column>
+    </Grid.Row>
+    <Grid.Row>
+      <Grid.Column>Description</Grid.Column>
+      <Grid.Column>{props.node.description}</Grid.Column>
     </Grid.Row>
   </Grid>
 )
 
 const Window = (props) => {
-  console.log("Right Sidebar Window props: ", props)
-  console.log("Right Sidebar, node: ", props.node.type)
-
   if (Object.keys(props.node).length === 0) {
     return (
       <div>
@@ -51,7 +52,7 @@ const Window = (props) => {
 
   return (
     <div>
-      <FileName path={props.node.path}/>
+      <FileName name={props.node.name}/>
       <hr />
       <div className="right-sidebar-image">
         <SelectImage type={props.node.type}/>
@@ -63,7 +64,7 @@ const Window = (props) => {
 }
 
 const mapStateToProps = ({ nodeMetadata }) => {
-  console.log("mapstate: ", nodeMetadata)
+  console.log("mapstate: ", nodeMetadata.node)
   return ({
     node: nodeMetadata.node,
     })

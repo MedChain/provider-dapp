@@ -23,13 +23,18 @@ const StyledTreeNode = styled.div`
 
 const NodeIcon = styled.div`
   font-size: 12px;
-  margin-right: ${props => props.marginRight ? props.marginRight : 5}px;
+  margin-right: ${props => props.marginRight ? props.marginRight : 5}px
 `;
 
-const getNodeLabel = (node) => last(node.path.split('/'));
+const getNodeLabel = (node) => {
+  console.log("testing get nodeLabel: ", node)
+  return last(node.name.split('/'))
+
+}
 
 const TreeNode = (props) => {
-  const { node, getChildNodes, level, onToggle, onNodeSelect } = props;
+  const { nodes, node, getChildNodes, level, onToggle, onNodeSelect } = props;
+  console.log("Tree Node running?", node)
 
   return (
     <div>
@@ -43,20 +48,22 @@ const TreeNode = (props) => {
           { node.type === 'folder' && node.isOpen === true && <FaFolderOpen /> }
           { node.type === 'folder' && !node.isOpen && <FaFolder /> }
         </NodeIcon>
-        
 
         <span role="button" onClick={() => onNodeSelect(node)}>
           { getNodeLabel(node) }
         </span>
-      </StyledTreeNode>
+      </StyledTreeNode> 
 
-      { node.isOpen && getChildNodes(node).map(childNode => (
-        <TreeNode 
-          {...props}
-          node={childNode}          
-          level={level + 1}
-        />
-      ))}
+      { node.isOpen && getChildNodes(node).map(childNode => {
+        let selectedChildNode = nodes.find(folder => folder.name === childNode)
+        return (
+          <TreeNode 
+            {...props}
+            node={selectedChildNode}          
+            level={level + 1}
+          />
+        )}
+      )}
     </div>
   );
 }
