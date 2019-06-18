@@ -13,7 +13,7 @@ import {
 import ControlledPopup from '../../components/ControlledPopup'
 import Tree from './left-sidebar-tree'
 import ArchiveTree from './archive-tree'
-import { nodeSelect, mainNodeSelect, allNodesSelect } from '../modules/metadata'
+import { nodeSelect, mainNodeSelect, allNodesSelect, toggleSelect } from '../modules/metadata'
 import rootNodes from './rootNodes'
 
 
@@ -52,15 +52,15 @@ class Window extends Component {
                 <List.Item as="a">EMR: Observation</List.Item>
               </List>
             </ControlledPopup>
-            
-            <Tree onSelect={this.onSelect} nodes={this.props.nodes} rootNodes={roots} children={this.props.children}/>
+
+            <Tree onSelect={this.onSelect} nodes={this.props.nodes} rootNodes={roots} children={this.props.children} onToggleSelect={this.props.toggleSelect} />
             <hr></hr>
             
             <ArchiveTree onSelect={this.onSelect}  nodes={this.props.nodes} rootNodes={roots} children={this.props.children}/>
             <hr></hr>
-            <div class="label">Storage</div>
-            <div class="ui tiny progress blue">
-              <div class="bar" ></div>
+            <div className="label">Storage</div>
+            <div className="ui tiny progress blue">
+              <div className="bar" ></div>
             </div>
             <div className="storage">130.1 GB used (1000 GB total)</div>
           </Sidebar>
@@ -86,7 +86,7 @@ const mapStateToProps = ({ nodeMetadata }, ownProps) => {
 const mapDispatchToProps = dispatch => {
   console.log("dispatch: ", dispatch)
   return bindActionCreators(
-    { nodeSelect, mainNodeSelect, allNodesSelect }, 
+    { nodeSelect, mainNodeSelect, allNodesSelect, toggleSelect }, 
     dispatch
     )
 }

@@ -50,9 +50,10 @@ const TreeNode = (props) => {
         </span>
       </StyledTreeNode>
 
-      { node.isOpen && getChildNodes(node).map(childNode => (
+      { node.isOpen && getChildNodes(node).map((childNode, i) => (
         <TreeNode 
           {...props}
+          key={i}
           node={childNode}          
           level={level + 1}
         />

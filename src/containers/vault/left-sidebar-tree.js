@@ -12,12 +12,14 @@ export default class Tree extends Component {
   }
 
   onToggle = node => {
-    const { nodes } = this.props
-    console.log("find: ", nodes.find(folder => folder.name === node.name))
-    nodes.find(folder => folder.name === node.name).isOpen = !node.isOpen
+    const { nodes, onToggleSelect } = this.props
+    const foundNode = nodes.find(folder => folder.name === node.name)
+    foundNode.isOpen = !node.isOpen
+    onToggleSelect(foundNode)
     // nodes[node.name].isOpen = !node.isOpen
-    this.setState({ nodes })
-
+    // this.setState({ nodes })
+    // this.setState({})
+    console.log("nodes left sb: ", nodes)
   }
 
   onNodeSelect = node => {
@@ -27,10 +29,12 @@ export default class Tree extends Component {
 
   render() {
     const { rootNodes, nodes } = this.props
+   
     return (
       <div>
         {rootNodes.map(node => (
           <TreeNode
+            key={node.name}
             nodes={nodes}
             node={node}
             getChildNodes={this.getChildNodes}

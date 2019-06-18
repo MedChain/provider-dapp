@@ -64,7 +64,6 @@ const Window = (props) => {
 }
 
 const mapStateToProps = ({ nodeMetadata }) => {
-  console.log("mapstate: ", nodeMetadata.node)
   return ({
     node: nodeMetadata.node,
     })

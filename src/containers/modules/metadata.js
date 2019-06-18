@@ -8,6 +8,7 @@ export const NODE_SELECTED = 'NODE_SELECTED'
 export const MAIN_NODE_SELECTED = 'MAIN_NODE_SELECTED'
 export const ALL_NODES_SELECTED = 'ALL_NODES_SELECTED'
 export const CHILDREN_SELECTED = 'CHILDREN_SELECTED'
+export const TOGGLE_SELECTED = 'TOGGLE_SELECTED'
 
 
 const apiURL = 'http://localhost:3000/vault/'
@@ -54,6 +55,12 @@ export default (state = initialState, action) => {
         ...state,
         children: action.children,
       }
+
+    case 'TOGGLE_SELECTED':
+      return {
+        ...state,
+        node: action.node
+      }
   
     default:
       return state
@@ -74,6 +81,13 @@ export const mainNodeSelect = mainNode => {
   return {
     type: MAIN_NODE_SELECTED,
     mainNode
+  }
+}
+
+export const toggleSelect = node => {
+  return {
+    type: TOGGLE_SELECTED,
+    node
   }
 }
 

@@ -26,15 +26,10 @@ const NodeIcon = styled.div`
   margin-right: ${props => props.marginRight ? props.marginRight : 5}px
 `;
 
-const getNodeLabel = (node) => {
-  console.log("testing get nodeLabel: ", node)
-  return last(node.name.split('/'))
-
-}
+const getNodeLabel = (node) => last(node.name.split('/'))
 
 const TreeNode = (props) => {
   const { nodes, node, getChildNodes, level, onToggle, onNodeSelect } = props;
-  console.log("Tree Node running?", node)
 
   return (
     <div>
@@ -59,6 +54,7 @@ const TreeNode = (props) => {
         return (
           <TreeNode 
             {...props}
+            key={selectedChildNode.name}
             node={selectedChildNode}          
             level={level + 1}
           />
