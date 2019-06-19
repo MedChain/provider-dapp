@@ -36,11 +36,11 @@ class Window extends Component {
   }
 
   render() {
-    const { node, mainNode, nodes, children } = this.props
+    const { node, mainNode, nodes, children, files } = this.props
 
     return (
       <React.Fragment>
-        <Main node={node} mainNode={mainNode} nodes={nodes} children={children} handleDoubleClick={this.handleDoubleClick} handleClick={this.handleClick}/>
+        <Main node={node} mainNode={mainNode} nodes={nodes} children={children} files={files} handleDoubleClick={this.handleDoubleClick} handleClick={this.handleClick}/>
         <DragAndDrop handleDrop={this.handleDrop}>
           <div id="vault">
             <FileUpload />
@@ -56,7 +56,8 @@ const mapStateToProps = ({ nodeMetadata }) => {
     node: nodeMetadata.node,
     mainNode: nodeMetadata.mainNode,
     nodes: nodeMetadata.nodes,
-    children: nodeMetadata.children
+    children: nodeMetadata.children,
+    files: nodeMetadata.files
     })
 }
 const mapDispatchToProps = (dispatch) => {

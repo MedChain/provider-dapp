@@ -9,15 +9,17 @@ export const MAIN_NODE_SELECTED = 'MAIN_NODE_SELECTED'
 export const ALL_NODES_SELECTED = 'ALL_NODES_SELECTED'
 export const CHILDREN_SELECTED = 'CHILDREN_SELECTED'
 export const TOGGLE_SELECTED = 'TOGGLE_SELECTED'
+export const FILES_SELECTED = 'FILES_SELECTED'
 
 
-const apiURL = 'http://localhost:3000/vault/'
+const apiURL = 'http://localhost:3000/vault'
 
 const initialState = {
   node: {},
   mainNode: {},
   nodes: {},
   children: {},
+  files: []
 }
 
 function handleErrors(response) {
@@ -60,6 +62,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         node: action.node
+      }
+
+    case 'FILES_SELECTED':
+      return {
+        ...state,
+        files: action.files,
       }
   
     default:
@@ -120,5 +128,24 @@ export const allNodesSelect = () => {
           })
         }
       ) 
+  }
+}
+
+export const filesSelect = (path) => {
+  console.log("path: ", path)
+  return dispatch => {
+    return fetch(apiURL + path, {
+      method: 'GET',
+      mode: 'cors'
+    })
+    .then(handleErrors)
+    .then(response => response.json())
+    .then(files => {
+      console.log("filesSelect: ", files)
+      dispatch({
+        type: FILES_SELECTED,
+        files
+      })
+    })
   }
 }

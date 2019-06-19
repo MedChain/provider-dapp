@@ -16,10 +16,6 @@ export default class Tree extends Component {
     const foundNode = nodes.find(folder => folder.name === node.name)
     foundNode.isOpen = !node.isOpen
     onToggleSelect(foundNode)
-    // nodes[node.name].isOpen = !node.isOpen
-    // this.setState({ nodes })
-    // this.setState({})
-    console.log("nodes left sb: ", nodes)
   }
 
   onNodeSelect = node => {

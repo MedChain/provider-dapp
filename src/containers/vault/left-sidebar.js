@@ -13,7 +13,7 @@ import {
 import ControlledPopup from '../../components/ControlledPopup'
 import Tree from './left-sidebar-tree'
 import ArchiveTree from './archive-tree'
-import { nodeSelect, mainNodeSelect, allNodesSelect, toggleSelect } from '../modules/metadata'
+import { nodeSelect, mainNodeSelect, allNodesSelect, filesSelect, toggleSelect } from '../modules/metadata'
 import rootNodes from './rootNodes'
 
 
@@ -24,8 +24,10 @@ class Window extends Component {
   }
 
   onSelect = treeNode => {
+    console.log("treeNode: ", treeNode)
     this.props.nodeSelect(treeNode)
     this.props.mainNodeSelect(treeNode)
+    this.props.filesSelect(treeNode.name)
   }
   
   render() {
@@ -79,14 +81,15 @@ const mapStateToProps = ({ nodeMetadata }, ownProps) => {
   return {
     nodes: nodeMetadata.nodes,
     children: nodeMetadata.children, 
-    node: nodeMetadata.node
+    node: nodeMetadata.node,
+    files: nodeMetadata.files
   }
 }
 
 const mapDispatchToProps = dispatch => {
   console.log("dispatch: ", dispatch)
   return bindActionCreators(
-    { nodeSelect, mainNodeSelect, allNodesSelect, toggleSelect }, 
+    { nodeSelect, mainNodeSelect, allNodesSelect, filesSelect, toggleSelect }, 
     dispatch
     )
 }
