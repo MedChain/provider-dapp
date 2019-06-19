@@ -3,7 +3,7 @@ import FileUpload from '../../components/FileUpload'
 import DragAndDrop from './drag-and-drop'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { nodeSelect, mainNodeSelect } from '../modules/metadata'
+import { nodeSelect, mainNodeSelect, filesSelect } from '../modules/metadata'
 import './vault.css'
 import Main from './main'
 
@@ -23,10 +23,11 @@ class Window extends Component {
   }
 
   handleDoubleClick = (fileName) => {
-    const { nodes, nodeSelect, mainNodeSelect } = this.props
+    const { nodes, nodeSelect, mainNodeSelect, filesSelect } = this.props
     const selectedNode = nodes.find(node => node.name === fileName)
     nodeSelect(selectedNode)
     mainNodeSelect(selectedNode)
+    filesSelect(fileName)
   }
 
   handleClick = (fileName) => {
@@ -62,7 +63,7 @@ const mapStateToProps = ({ nodeMetadata }) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { nodeSelect, mainNodeSelect }, 
+    { nodeSelect, mainNodeSelect, filesSelect }, 
     dispatch
   )
 }

@@ -132,16 +132,16 @@ export const allNodesSelect = () => {
 }
 
 export const filesSelect = (path) => {
-  console.log("path: ", path)
   return dispatch => {
     return fetch(apiURL + path, {
       method: 'GET',
       mode: 'cors'
     })
     .then(handleErrors)
-    .then(response => response.json())
+    .then(response => {
+      return response.json()
+    })
     .then(files => {
-      console.log("filesSelect: ", files)
       dispatch({
         type: FILES_SELECTED,
         files
