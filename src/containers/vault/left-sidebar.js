@@ -24,7 +24,6 @@ class Window extends Component {
   }
 
   onSelect = treeNode => {
-    console.log("treeNode: ", treeNode)
     this.props.nodeSelect(treeNode)
     this.props.mainNodeSelect(treeNode)
     this.props.filesSelect(treeNode.name)

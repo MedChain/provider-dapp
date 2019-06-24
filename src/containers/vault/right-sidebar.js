@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid } from 'semantic-ui-react'
-import { FaFile, FaFolder } from 'react-icons/fa';
+import { FaFolder,  FaFileAlt } from 'react-icons/fa';
 import "./vault.css"
 import { connect } from 'react-redux'
 import last from 'lodash/last'
@@ -12,31 +12,42 @@ const FileName = (props) => {
 }
 
 const SelectImage = (props) => {
-  // Add option of folder icon image or file icon depending on file type
-  {/* <Image src="" alt="" size="medium" centered /> */}
-  return <FaFolder size={50}/> 
+  const { type } = props
+  if (type === "folder") {
+    return <FaFolder size={50}/> 
+  } else if (type === "file") {
+    return < FaFileAlt  size={50}/>
+  }
 }
 
-const MetaDataList = (props) => (
-  <Grid columns={2} className="right-sidebar-grid">
-    <Grid.Row>
-      <Grid.Column>Type</Grid.Column>
-      <Grid.Column>{props.node.type}</Grid.Column>
-    </Grid.Row>
-    <Grid.Row>
-      <Grid.Column>Location</Grid.Column>
-      <Grid.Column>{props.node.name}</Grid.Column>
-    </Grid.Row>
-    <Grid.Row>
-      <Grid.Column>Created</Grid.Column>
-      <Grid.Column>{props.node.created}</Grid.Column>
-    </Grid.Row>
-    <Grid.Row>
-      <Grid.Column>Description</Grid.Column>
-      <Grid.Column>{props.node.description}</Grid.Column>
-    </Grid.Row>
-  </Grid>
-)
+const MetaDataList = (props) => {
+  const { type, name, path, created, modified, description } = props.node
+
+  return (
+    <Grid columns={2} className="right-sidebar-grid">
+      <Grid.Row>
+        <Grid.Column>Type</Grid.Column>
+        <Grid.Column>{type}</Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column>Location</Grid.Column>
+        <Grid.Column>{path}</Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column>Created</Grid.Column>
+        <Grid.Column>{created}</Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+      <Grid.Column>Modified</Grid.Column>
+        <Grid.Column>{modified}</Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column>Description</Grid.Column>
+        <Grid.Column>{description}</Grid.Column>
+      </Grid.Row>
+    </Grid>
+  )
+}
 
 const Window = (props) => {
   if (Object.keys(props.node).length === 0) {

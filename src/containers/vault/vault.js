@@ -3,7 +3,7 @@ import FileUpload from '../../components/FileUpload'
 import DragAndDrop from './drag-and-drop'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { nodeSelect, mainNodeSelect, filesSelect } from '../modules/metadata'
+import { nodeSelect, mainNodeSelect, filesSelect, singleFileSelect } from '../modules/metadata'
 import './vault.css'
 import Main from './main'
 
@@ -30,10 +30,16 @@ class Window extends Component {
     filesSelect(fileName)
   }
 
-  handleClick = (fileName) => {
-    const { nodes, nodeSelect } = this.props
-    const selectedNode = nodes.find(node => node.name === fileName)
-    nodeSelect(selectedNode)
+  handleClick = (fileName, type) => {
+    const { nodes, nodeSelect, files, singleFileSelect } = this.props
+    if (type === "folder") {
+      const selectedFolder = nodes.find(node => node.name === fileName)
+      nodeSelect(selectedFolder)
+    } else if (type === "file") {
+      const selectedFile = files.find(file => (file.path + "/" + file.name) === fileName)
+      console.log("FILE!!!: ", selectedFile)
+      singleFileSelect(selectedFile)
+    }
   }
 
   render() {
@@ -63,7 +69,7 @@ const mapStateToProps = ({ nodeMetadata }) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { nodeSelect, mainNodeSelect, filesSelect }, 
+    { nodeSelect, mainNodeSelect, filesSelect, singleFileSelect }, 
     dispatch
   )
 }

@@ -10,6 +10,7 @@ export const ALL_NODES_SELECTED = 'ALL_NODES_SELECTED'
 export const CHILDREN_SELECTED = 'CHILDREN_SELECTED'
 export const TOGGLE_SELECTED = 'TOGGLE_SELECTED'
 export const FILES_SELECTED = 'FILES_SELECTED'
+export const SINGLE_FILE_SELECTED = 'SINGLE_FILE_SELECTED'
 
 
 const apiURL = 'http://localhost:3000/vault'
@@ -69,6 +70,12 @@ export default (state = initialState, action) => {
         ...state,
         files: action.files,
       }
+
+    case 'SINGLE_FILE_SELECTED':
+      return {
+        ...state,
+        node: action.node
+      }
   
     default:
       return state
@@ -79,6 +86,16 @@ export default (state = initialState, action) => {
 // action creators
 
 export const nodeSelect = node => {
+  if (!node.path) {
+    node.path = node.name
+    let lastIndex = node.name.lastIndexOf('/')
+    if (lastIndex === 0) {
+      node.path = "MyVault"
+    } else {
+      node.path = node.name.slice(0, lastIndex)
+    }
+  }
+  console.log(node)
   return { 
     type: NODE_SELECTED, 
     node 
@@ -96,6 +113,13 @@ export const toggleSelect = node => {
   return {
     type: TOGGLE_SELECTED,
     node
+  }
+}
+
+export const singleFileSelect = file => {
+  return {
+    type: SINGLE_FILE_SELECTED,
+    node: file
   }
 }
 
@@ -144,7 +168,12 @@ export const filesSelect = (path) => {
     .then(files => {
       dispatch({
         type: FILES_SELECTED,
-        files
+        files: files.map(file => {
+          return {
+            ...file,
+            type: "file"
+          }
+        })
       })
     })
   }
