@@ -9,7 +9,7 @@ const CreateFolder = (props) => {
 
   const folders = nodeNames.map((name) => {
     const folderName = last(name.split('/'))
-    return (
+    return ( 
       <button key={name} type="button" className="vault-main-button" onDoubleClick={(e) => handleDoubleClick(name, e)} onClick={() => handleClick(name, "folder")}>
         <FaFolder className="vault-main-icon"/>  
         <span >{folderName}</span>

@@ -37,13 +37,13 @@ class Window extends Component {
       nodeSelect(selectedFolder)
     } else if (type === "file") {
       const selectedFile = files.find(file => (file.path + "/" + file.name) === fileName)
-      console.log("FILE!!!: ", selectedFile)
       singleFileSelect(selectedFile)
     }
   }
 
   render() {
     const { node, mainNode, nodes, children, files } = this.props
+    console.log("PROPS in Vault.js ", this.props)
 
     return (
       <React.Fragment>

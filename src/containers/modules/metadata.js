@@ -1,7 +1,6 @@
 import childFolders from './children'
 
 // import data from './dummyData'
-
 // export const NODE_SELECTED = 'metadata/NODE_SELECTED'
 
 export const NODE_SELECTED = 'NODE_SELECTED'
@@ -95,7 +94,6 @@ export const nodeSelect = node => {
       node.path = node.name.slice(0, lastIndex)
     }
   }
-  console.log(node)
   return { 
     type: NODE_SELECTED, 
     node 
@@ -133,10 +131,8 @@ export const allNodesSelect = () => {
     })
       .then(handleErrors)
       .then(response => {
-        // console.log('RESPONSE', response)
         return response.json()})
       .then(nodes => {
-          // console.log('ALL NODES SELECT', nodes)
           dispatch({
             type: ALL_NODES_SELECTED,
             nodes: nodes.map(node => {
