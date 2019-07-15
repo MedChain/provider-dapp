@@ -3,9 +3,10 @@ import FileUpload from '../../components/FileUpload'
 import DragAndDrop from './drag-and-drop'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { nodeSelect, mainNodeSelect, filesSelect, singleFileSelect } from '../modules/metadata'
+import { nodeSelect, filesSelect, singleFileSelect } from '../modules/metadata'
 import './vault.css'
 import Main from './main'
+import { Link, Route, withRouter } from 'react-router-dom'
 
 
 class Window extends Component {
@@ -22,19 +23,13 @@ class Window extends Component {
     this.setState({ files: fileList })
   }
 
-  handleDoubleClick = (fileName) => {
-    const { nodes, nodeSelect, mainNodeSelect, filesSelect } = this.props
-    const selectedNode = nodes.find(node => node.name === fileName)
-    nodeSelect(selectedNode)
-    mainNodeSelect(selectedNode)
-    filesSelect(fileName)
-  }
 
   handleClick = (fileName, type) => {
-    const { nodes, nodeSelect, files, singleFileSelect } = this.props
+    const { nodes, nodeSelect, files, filesSelect, singleFileSelect } = this.props
     if (type === "folder") {
       const selectedFolder = nodes.find(node => node.name === fileName)
       nodeSelect(selectedFolder)
+      filesSelect(fileName)
     } else if (type === "file") {
       const selectedFile = files.find(file => (file.path + "/" + file.name) === fileName)
       singleFileSelect(selectedFile)
@@ -42,17 +37,21 @@ class Window extends Component {
   }
 
   render() {
-    const { node, mainNode, nodes, children, files } = this.props
+    // const { node, nodes, children, files } = this.props
     console.log("PROPS in Vault.js ", this.props)
 
     return (
       <React.Fragment>
-        <Main node={node} mainNode={mainNode} nodes={nodes} children={children} files={files} handleDoubleClick={this.handleDoubleClick} handleClick={this.handleClick}/>
+        <Main {...this.props} handleClick={this.handleClick} />
         <DragAndDrop handleDrop={this.handleDrop}>
           <div id="vault">
             <FileUpload />
           </div>
         </DragAndDrop>
+        {/* <Route path="/vault/:path" render={() => {
+          console.log("match", history)
+          return <Main />
+          }} />  */}
       </React.Fragment>
     )
   }
@@ -61,7 +60,6 @@ class Window extends Component {
 const mapStateToProps = ({ nodeMetadata }) => {
   return ({
     node: nodeMetadata.node,
-    mainNode: nodeMetadata.mainNode,
     nodes: nodeMetadata.nodes,
     children: nodeMetadata.children,
     files: nodeMetadata.files
@@ -69,12 +67,12 @@ const mapStateToProps = ({ nodeMetadata }) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { nodeSelect, mainNodeSelect, filesSelect, singleFileSelect }, 
+    { nodeSelect, filesSelect, singleFileSelect }, 
     dispatch
   )
 }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Window)
+)(Window))

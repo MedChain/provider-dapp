@@ -35,6 +35,8 @@ import TempPage7 from '../temp-page/temp-page7'
 import TempPage8 from '../temp-page/temp-page8'
 import TempPage9 from '../temp-page/temp-page9'
 
+import Main from '../vault/main'
+
 import {
   switchPatient,
   apiGetPatientList,
@@ -85,6 +87,12 @@ class App extends React.Component {
           <Route path="/dashboard/*" component={Dashboard} />
           <Route exact path="/vault/" component={Vault} />
           <Route exact path="/vault/*" component={Vault} />
+         
+          {/* <Route path="/vault/:path" render={() => {
+          console.log("match")
+          return <Main />
+          }} />  */}
+
           <Route exact path="/emr/" component={Emr} />
           <Route exact path="/emr/*" component={Emr} />
           <Route exact path="/doctor" component={Doctor} />
