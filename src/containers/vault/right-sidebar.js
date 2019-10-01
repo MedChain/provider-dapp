@@ -8,7 +8,8 @@ import PropTypes from 'prop-types';
 
 
 const FileName = (props) => {
-  return <h2 className="app-right-sidebar-header">{last(props.name.split('/'))}</h2>
+  const name = props.path ? last(props.path.split('/')) :  "fix this";
+  return <h2 className="app-right-sidebar-header">{name}</h2>
 }
 
 const SelectImage = (props) => {

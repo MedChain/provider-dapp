@@ -25,7 +25,7 @@ class Window extends Component {
 
   onSelect = treeNode => {
     this.props.nodeSelect(treeNode)
-    this.props.filesSelect(treeNode.name)
+    this.props.filesSelect(treeNode.path)
   }
   
   render() {

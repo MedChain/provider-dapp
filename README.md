@@ -14,6 +14,13 @@ vim semantic/tasks/config/user.js
 #look for line 42 and make it read: extend(true, {}, defaults, userConfig)
 ```
 
+```bash
+(in a separate window - start this one first)
+git clone git@github.com:MedChain/test-api.git
+cd test-api
+npm start
+```
+
 ## Get started
 
 ```bash
