@@ -3,7 +3,7 @@ import values from 'lodash/values'
 import PropTypes from 'prop-types'
 import TreeNode from './archive-tree-node'
 
-const data = {
+/* const data = {
     id: 1,
   '/Archive': {
     userId: 1,
@@ -42,20 +42,32 @@ const data = {
     type: 'folder',
     children: []
   },
-}
+} */
 
 export default class ArchiveTree extends Component {
   state = {
-    nodes: data
+    nodes: []
   }
 
   componentDidMount = () => {
     this.getRootNodes()
+    this.getFolders()
   }
 
   getRootNodes = () => {
     const { nodes } = this.state
     return values(nodes).filter(node => node.isRoot === true)
+  }
+
+  getFolders = () => {
+    fetch(`http://localhost:8000/vault/folders`)
+      .then(data =>
+        data.json())
+      .then(data =>
+        this.setState({
+          nodes: data
+        })
+      )
   }
 
   getChildNodes = node => {
