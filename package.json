@@ -39,7 +39,7 @@
     "sanitize.css": "6.0.0",
     "semantic-ui": "^2.3.3",
     "semantic-ui-react": "^0.82.3",
-    "serve": "9.3.0",
+    "serve": "10.1.2",
     "styled-components": "^4.2.0"
   }
 }
